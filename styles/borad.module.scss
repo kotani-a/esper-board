@@ -1,0 +1,90 @@
+.borad {
+  position: relative;
+  .panel {
+    // background-color: rgba(170, 146, 88, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
+    // border-left: 2px solid #ffffb5;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+    width: 240px;
+    height: 100%;
+    padding: 8px;
+    position: fixed;
+    right: 0;
+    z-index: 5;
+    .activeMesh {
+      display: flex;
+      flex-direction: column;
+      .spWrap {
+        margin-bottom: 32px;
+        // border-bottom: 2px solid greenyellow;
+        .sp {
+          font-size: 20px;
+        }
+        .stockSp {
+          font-size: 32px;
+          font-weight: bold;
+        }
+      }
+      .activeAbilityTitle {
+        margin-bottom: 4px;
+        font-size: 20px;
+        .activeAbilityTitleText {
+          margin-right: 8px;
+        }
+      }
+      .activeAbility {
+        padding: 4px 0;
+        .abilityTypeValue {
+          font-size: 20px;
+        }
+      }
+    }
+    .controlButtons {
+      position: fixed;
+      bottom: 0;
+      // background-color: greenyellow;
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      z-index: 1;
+      .cameraPositionTitle {
+        font-size: 20px;
+        margin-bottom: 4px;
+        .cameraPositionTitleText {
+          margin-right: 8px;
+        }
+      }
+      .zoomButtons {
+        margin-bottom: 12px;
+        .zoomIn {
+          margin-right: 8px;
+        }
+      }
+      .menuRow {
+        width: 120px;
+        display: flex;
+        &:nth-child(1),&:nth-child(3) {
+          justify-content: center;
+        }
+        &:nth-child(2) {
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+  .myCanvas {
+    background-image: radial-gradient(#3e3222, #111111);
+    .hex {
+      // position: absolute;
+    }
+  }
+  .lables {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

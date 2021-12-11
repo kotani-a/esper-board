@@ -1,0 +1,24 @@
+.hex {
+  position: absolute;
+  color: #eeeeee;
+  text-shadow: #111111 0 0 5px;
+  pointer-events: none;
+  white-space: nowrap;
+  // width: 180px;
+  // height: 180px;
+  &:hover {}
+  .hexTexts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .abilityName {
+      padding: 4px;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    .sp {
+      margin-bottom: 12px;
+      padding: 4px;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+  }
+}
