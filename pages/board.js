@@ -31,11 +31,11 @@ import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 
-import styles from '../styles/borad.module.scss'
+import styles from '../styles/board.module.scss'
 
 import siren from '../constants/siren.json'
 
-class Borad extends React.Component {
+class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -523,7 +523,7 @@ class Borad extends React.Component {
     this.sumActiveAbilityArray();
 
     return (
-      <div id="borad" className={styles.borad}>
+      <div id="board" className={styles.board}>
         <div className={styles.panel}>
           <div className={styles.activeMesh}>
             <h3 className={styles.spWrap}>
@@ -627,4 +627,4 @@ class Borad extends React.Component {
     );
   }
 }
-export default Borad
+export default Board
