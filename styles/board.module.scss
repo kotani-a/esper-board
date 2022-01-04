@@ -16,7 +16,6 @@
       flex-direction: column;
       .spWrap {
         margin-bottom: 32px;
-        // border-bottom: 2px solid greenyellow;
         .sp {
           font-size: 20px;
         }
@@ -37,6 +36,18 @@
         .abilityTypeValue {
           font-size: 20px;
         }
+      }
+      .meter,
+      .thinMeter {
+        margin: 4px 0;
+        transition: 1s ease-in;
+        background-color: #adff2f;
+      }
+      .meter {
+        height: 6px;
+      }
+      .thinMeter {
+        height: 3px;
       }
     }
     .controlButtons {

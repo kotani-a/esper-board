@@ -41,6 +41,8 @@ class Board extends React.Component {
     this.state = {
       activeMeshList: [],
       stockSp: 0,
+      availableSp: 0,
+      abilityMaxValues: [],
       mouseDown :false,
       mousedownPosition: {
         x: 0,
@@ -91,7 +93,11 @@ class Board extends React.Component {
         .then(data => {
           this.esperData = data
           this.isGetEsperData = true
-          this.setState({stockSp: data.availableSp});
+          this.setState({
+            stockSp: data.availableSp,
+            availableSp: data.availableSp,
+            abilityMaxValues: data.abilityMaxValues
+          });
           resolve(true)
         })
         .catch(() => resolve(false))
@@ -144,8 +150,7 @@ class Board extends React.Component {
     // 中心のhex作成 start
     this['hexGroup0'] = new Group();
     const loader = new TextureLoader();
-    // const material = new MeshPhongMaterial( { color: 0x962966, map: texture } );
-    const material = new MeshPhongMaterial({map: loader.load('https://threejsfundamentals.org/threejs/resources/images/flower-1.jpg')});
+    const material = new MeshPhongMaterial({color: 0x962966});
     const materialFrame = new MeshPhongMaterial( { color: 0xffffb5 } );
     const materialBase = new MeshLambertMaterial( { color: 0xaa9258 } );
     this['meshBase0'] = new Mesh( geometryBase, materialBase );
@@ -198,6 +203,7 @@ class Board extends React.Component {
       this[`mesh${ability.id}`].abilityType = ability.abilityType;
       this[`mesh${ability.id}`].abilityTypeLabel = ability.abilityTypeLabel;
       this[`mesh${ability.id}`].value = ability.value;
+      this[`mesh${ability.id}`].level = ability?.level;
       this[`mesh${ability.id}`].childrenHexs = ability.childrenHexs;
       this[`mesh${ability.id}`].parentHexs = ability.parentHexs;
       this[`mesh${ability.id}`].disabled = false;
@@ -207,7 +213,8 @@ class Board extends React.Component {
       this.scene.add(this[`hexGroup${ability.id}`]);
 
       const div = document.getElementById(`mesh${ability.id}`) || document.createElement('div')
-      div.innerHTML  = `<div class="hexTexts">
+      div.innerHTML  =
+      `<div class="hexTexts">
         <span class="sp">${ability.sp} SP</span>
         <span class="abilityName">${ability.lable}</span>
       </div>`;
@@ -348,6 +355,7 @@ class Board extends React.Component {
   }
 
   onMousedown(e) {
+    if (!this.isGetEsperData) return
     this.setState({
       mouseDown: true,
       mousedownPosition: {
@@ -388,6 +396,7 @@ class Board extends React.Component {
   }
 
   onMouseup() {
+    if (!this.isGetEsperData) return
     this.setState({
       mouseDown: false,
       mousedownPosition: {
@@ -398,7 +407,7 @@ class Board extends React.Component {
   }
 
   onMousemove(e) {
-    if (e.target.id !== 'lables') return
+    if (e.target.id !== 'lables' || !this.isGetEsperData) return
     const {
       mousedownPosition,
       mouseDown
@@ -418,20 +427,27 @@ class Board extends React.Component {
       // // 光線と交わるオブジェクトを収集
       const intersects = this.raycaster.intersectObjects(this.meshList);
 
-      this.meshList.map((mesh) => {
+      this.meshList.map(mesh => {
+        if (mesh.meshId === 'mesh0') return
         // 交差しているオブジェクトが1つ以上存在し、
         // 交差しているオブジェクトの1番目(最前面)のものだったら
         // 選択不可のものではないなら
         if (intersects.length > 0 && mesh === intersects[0].object && !mesh.disabled) {
           // マウスオーバー時の色
           mesh.material.color.setHex(0xF48BC7);
+          const meshDom = document.getElementById(mesh.meshId);
+          meshDom.firstChild.style.transform = 'scale(1.4)';
         } else if (mesh.active) {
           mesh.material.color.setHex(0xB0A341);
+          const meshDom = document.getElementById(mesh.meshId);
+          meshDom.firstChild.style.transform = 'scale(1)';
         } else if (mesh.disabled) {
           mesh.material.color.setHex(0x555555);
         } else {
           // それ以外は元の色にする
           mesh.material.color.setHex(0x962966);
+          const meshDom = document.getElementById(mesh.meshId);
+          meshDom.firstChild.style.transform = 'scale(1)';
         }
       });
     }
@@ -456,7 +472,7 @@ class Board extends React.Component {
         const projection = worldPosition.project(this.camera);
         const sx = (canvas.clientWidth / 2) * (+projection.x + 1.0);
         const sy = (canvas.clientHeight / 2) * (-projection.y + 1.0);
-        meshDom.style.top = `${sy + 4}px`;
+        meshDom.style.top = `${sy - 12}px`;
         meshDom.style.left = `${sx - (meshDom.clientWidth / 2)}px`;
       });
       resolve('resolved');
@@ -491,22 +507,22 @@ class Board extends React.Component {
   }
 
   moveRight() {
-    this.moveCamera('x', -1000);
+    this.moveCamera('x', 1000);
     this.resetDomPosition();
   }
 
   moveLeft() {
-    this.moveCamera('x', +1000);
+    this.moveCamera('x', -1000);
     this.resetDomPosition();
   }
 
   moveTop() {
-    this.moveCamera('y', -1000);
+    this.moveCamera('y', 1000);
     this.resetDomPosition();
   }
 
   moveBottom() {
-    this.moveCamera('y', +1000);
+    this.moveCamera('y', -1000);
     this.resetDomPosition();
   }
 
@@ -533,16 +549,28 @@ class Board extends React.Component {
   }
 
   sumActiveAbilityArray() {
+  const {
+    activeMeshList,
+    abilityMaxValues
+  } = this.state;
     const result = [];
-    this.state.activeMeshList.forEach(activeMech => {
+    activeMeshList.forEach(activeMech => {
       const index = result.findIndex(r => r.abilityType === activeMech.abilityType);
+      const maxValue = abilityMaxValues.find(ability => ability.type === activeMech.abilityType).value;
       if (index > -1) {
-        result[index].value += activeMech.value 
+        if (activeMech.abilityType === 'boostEvocationDamage' && result[index].level < activeMech.level) {
+          result[index].level = activeMech.level;
+          result[index].value += activeMech.value;
+        } else {
+          result[index].value += activeMech.value;
+        }
       } else {
         result.push({
           abilityType: activeMech.abilityType,
           abilityTypeLabel: activeMech.abilityTypeLabel,
-          value: activeMech.value
+          value: activeMech.value,
+          level: activeMech.level,
+          maxValue
         });
       }
     });
@@ -550,8 +578,10 @@ class Board extends React.Component {
   }
 
   render() {
-    const { stockSp } = this.state
-    this.sumActiveAbilityArray();
+    const {
+      stockSp,
+      availableSp
+    } = this.state;
 
     return (
       <div id="board" className={styles.board}>
@@ -560,6 +590,10 @@ class Board extends React.Component {
             <h3 className={styles.spWrap}>
               <span className={styles.sp}>SP: </span>
               <span className={styles.stockSp}>{stockSp}</span>
+              <div
+                className={styles.meter}
+                style={{ width: `${(stockSp/availableSp)*100}%`}}
+              ></div>
             </h3>
             <h3 className={styles.activeAbilityTitle}>
               <span className={styles.activeAbilityTitleText}>発動アビリティ</span>
@@ -577,7 +611,11 @@ class Board extends React.Component {
                 key={i}
               >
                 <span>{activeMech.abilityTypeLabel}: </span>
-                <span className={styles.abilityTypeValue}>{activeMech.value}</span>
+                <span className={styles.abilityTypeValue}>{activeMech.abilityType === 'boostEvocationDamage' ? activeMech.level : activeMech.value}</span>
+                <div
+                  className={styles.thinMeter}
+                  style={{ width: `${(activeMech.value/activeMech.maxValue)*100}%`}}
+                ></div>
               </h4>
             )}
           </div>

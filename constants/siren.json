@@ -1,6 +1,52 @@
 {
   "awakeningPhase": 3,
   "availableSp": 652,
+  "abilityMaxValues": [
+    {
+      "type": "boostEvocationDamage",
+      "value": 19
+    },
+    {
+      "type": "attackSkillChantTimeDown",
+      "value": 200
+    },
+    {
+      "type": "aimingUp",
+      "value": 7
+    },
+    {
+      "type": "fireKillerUp",
+      "value": 15
+    },
+    {
+      "type": "waterAbilityResistUp",
+      "value": 15
+    },
+    {
+      "type": "waterAbilityAttackUp",
+      "value": 25
+    },
+    {
+      "type": "slashingResistUp",
+      "value": 25
+    },
+    {
+      "type": "criticalUp",
+      "value": 7
+    },
+    {
+      "type": "dodgeUp",
+      "value": 7
+    },
+    {
+      "type": "beastkillerUp",
+      "value": 25
+    },
+    {
+      "type": "stingUp",
+      "value": 15
+    }
+  ],
   "board": [
     {
       "id": "4_plus",
@@ -14,6 +60,7 @@
           "abilityType": "boostEvocationDamage",
           "abilityTypeLabel": "召喚魔法Lv",
           "value": 5,
+          "level": 15,
           "corner": 4,
           "childrenHexs": [
             "1_minus_0",
@@ -32,6 +79,7 @@
           "abilityType": "boostEvocationDamage",
           "abilityTypeLabel": "召喚魔法Lv",
           "value": 5,
+          "level": 20,
           "corner": 5,
           "childrenHexs": [
             "1_minus_0",
@@ -56,6 +104,7 @@
           "abilityType": "boostEvocationDamage",
           "abilityTypeLabel": "召喚魔法Lv",
           "value": 3,
+          "level": 7,
           "corner": 4,
           "childrenHexs": [
             "1_minus_0",
@@ -115,6 +164,7 @@
           "abilityType": "boostEvocationDamage",
           "abilityTypeLabel": "召喚魔法Lv",
           "value": 3,
+          "level": 10,
           "corner": 2,
           "childrenHexs": [
             "1_minus_0",
@@ -140,6 +190,7 @@
           "abilityType": "boostEvocationDamage",
           "abilityTypeLabel": "召喚魔法Lv",
           "value": 2,
+          "level": 4,
           "corner": 4,
           "childrenHexs": [
             "1_minus_0"
@@ -317,6 +368,7 @@
           "abilityType": "boostEvocationDamage",
           "abilityTypeLabel": "召喚魔法Lv",
           "value": 1,
+          "level": 1,
           "corner": 3,
           "childrenHexs": [],
           "parentHexs": [

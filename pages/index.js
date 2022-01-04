@@ -13,7 +13,6 @@ import espers from 'constants/espers.json'
 export default function Home() {
   return (
     <div>
-      test fix
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
