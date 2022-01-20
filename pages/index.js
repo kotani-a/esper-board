@@ -1,10 +1,3 @@
-// import Head from 'next/head'
-// import styles from '../styles/Home.module.css'
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
@@ -17,14 +10,15 @@ import {
   GridToolbarFilterButton,
   jaJP
 } from '@mui/x-data-grid';
-import Popover from '@mui/material/Popover';
 import Tooltip from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { jaJP as coreJaJP } from '@mui/material/locale';
+import BuffsPopOver from 'components/buffsPopOver';
+import EsperMagicPopOver from 'components/esperMagicPopOver';
 import Link from 'next/link';
-import { useRouter } from 'next/router'
 import { useState } from 'react';
+
+import styles from '../styles/home.module.scss'
 
 import espers from 'constants/espers.json'
 
@@ -61,6 +55,24 @@ function elementLabel (element) {
     break;
     default:
       label = '無属性'
+  }
+  return label
+}
+
+function rarityLabel (rarity) {
+  let label
+  switch (rarity) {
+    case 5:
+      label = 'UR';
+    break;
+    case 4:
+      label = 'SSR';
+    break;
+    case 3:
+      label = 'SR';
+    break;
+    default:
+      label = 'SR'
   }
   return label
 }
@@ -109,7 +121,8 @@ const columns = [
     width: 80,
     editable: false,
     popover: false,
-    hide: false
+    hide: false,
+    valueGetter: (params) => rarityLabel(params.row.rarity)
   },
   {
     field: 'cost',
@@ -293,7 +306,7 @@ const columns = [
     width: 350,
     editable: false,
     popover: true,
-    valueGetter: (params) => [...params.row.boardBuffs],
+    valueGetter: (params) => [...params.row.boardBuffs.map(boardBuffs => boardBuffs.buffs)],
     hide: false
   },
   {
@@ -329,8 +342,8 @@ function QuickSearchToolbar(props) {
       }}
     >
       <div>
-        <GridToolbarColumnsButton />
-        <GridToolbarFilterButton />
+        <GridToolbarColumnsButton sx={{ mr: 3 }} />
+        <GridToolbarFilterButton sx={{ mr: 3 }} />
         <GridToolbarDensitySelector />
       </div>
       <TextField
@@ -371,11 +384,10 @@ function QuickSearchToolbar(props) {
   );
 }
 
-// const rows = espers;
-
 export default function Home() {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [value, setValue] = useState('');
+  const [buffsPopOverValue, setBuffsPopOverValue] = useState('');
+  const [esperMagicPopOverValue, setEsperMagicPopOverValue] = useState('');
   const [searchText, setSearchText] = useState('');
   const [rows, setRows] = useState(espers);
 
@@ -397,18 +409,18 @@ export default function Home() {
     const id = event.currentTarget.parentElement.dataset.id;
     const row = rows.find((r) => r.id === id);
     if (field === 'esperMagic') {
-      setValue(row[field].effect);
+      setEsperMagicPopOverValue(row[field]);
     } else {
-      setValue(row[field]);
+      setBuffsPopOverValue(row[field]);
     }
     setAnchorEl(event.currentTarget);
   };
 
   const handlePopoverClose = () => {
     setAnchorEl(null);
+    setEsperMagicPopOverValue('');
+    setBuffsPopOverValue('');
   };
-
-  const open = Boolean(anchorEl);
 
   const theme = createTheme(
     {
@@ -445,52 +457,18 @@ export default function Home() {
           }}
         />
       </ThemeProvider>
-      <Popover
-        sx={{
-          pointerEvents: 'none',
-        }}
-        open={open}
+      <BuffsPopOver
+        open={Boolean(buffsPopOverValue)}
         anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
+        value={buffsPopOverValue}
         onClose={handlePopoverClose}
-        disableRestoreFocus
-      >
-        <Typography sx={{ p: 1 }}>{`${value}`}</Typography>
-      </Popover>
-      {/* <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="right">id</TableCell>
-            <TableCell align="right">name</TableCell>
-            <TableCell align="right">rarity</TableCell>
-            <TableCell align="right">cost</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {espers.map((row) => (
-            <TableRow
-              key={row.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell align="right">{row.id}</TableCell>
-              <TableCell align="right">
-                <Link href={`/board/${row.id}`}>
-                  <a target="_blank">{row.name}</a>
-                </Link>
-              </TableCell>
-              <TableCell align="right">{row.rarity}</TableCell>
-              <TableCell align="right">{row.cost}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table> */}
+      />
+      <EsperMagicPopOver
+        open={Boolean(esperMagicPopOverValue)}
+        anchorEl={anchorEl}
+        value={esperMagicPopOverValue}
+        onClose={handlePopoverClose}
+      />
     </div>
   )
 }
