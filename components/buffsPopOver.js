@@ -22,9 +22,9 @@ export default function BuffsPopOver(props) {
         onClose={props.handlePopoverClose}
         disableRestoreFocus
       >
-        {props.value && props.value.map(buffs => {
+        {props.value && props.value.map((buffs, i) => {
           return (
-            <div>
+            <div key={i}>
               <Typography variant="h6" sx={{ px: 1, pt: 1, fontWeight: 'bold' }}>{`${buffs.type}`}</Typography>
               <Typography sx={{ px: 1 }}>{`${buffs.buffs}`}</Typography>
             </div>
