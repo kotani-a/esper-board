@@ -506,6 +506,7 @@ class Board extends React.Component {
     });
     // 2本指(ピンチイン/ピンチアウト)の時
     if(e.touches.length > 1){
+      e.preventDefault();
       //絶対値を取得
       const touchstartWidth = Math.abs(e.touches[1].pageX - e.touches[0].pageX);
       const touchstartHeight = Math.abs(e.touches[1].pageY - e.touches[0].pageY);
@@ -534,6 +535,7 @@ class Board extends React.Component {
 
     // 2本指(ピンチイン/ピンチアウト)の時
     if(e.touches.length > 1) {
+      e.preventDefault();
       //絶対値を取得
       const touchmoveWidth = Math.abs(e.touches[1].pageX - e.touches[0].pageX);
       const touchmoveHeight = Math.abs(e.touches[1].pageY - e.touches[0].pageY);
