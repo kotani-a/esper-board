@@ -679,6 +679,8 @@ class Board extends React.Component {
               <span className={styles.sp}>SP: </span>
               {/* ↓後でけす。テスト用 */}
               <span>{this.ratio}</span>
+              {/* ↓後でけす。テスト用 */}
+              <span>{this.touchstartArea}</span>
               <span className={styles.stockSp}>{stockSp}</span>
               <div
                 className={styles.meter}
