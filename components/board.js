@@ -48,6 +48,8 @@ class Board extends React.Component {
     super(props);
     this.esperData = {};
     this.isGetEsperData = false;
+    this.touchstartArea = 0;
+    this.ratio = 0;
     this.state = {
       activeMeshList: [],
       stockSp: 0,
@@ -65,6 +67,9 @@ class Board extends React.Component {
     this.onMousemove = this.onMousemove.bind(this);
     this.onResize = this.onResize.bind(this);
     this.onWheel = this.onWheel.bind(this);
+    this.onTouchstart = this.onTouchstart.bind(this);
+    this.onTouchend = this.onTouchend.bind(this);
+    this.onTouchmove = this.onTouchmove.bind(this);
   }
 
   async componentDidMount () {
@@ -78,8 +83,9 @@ class Board extends React.Component {
     window.addEventListener('mousemove', this.onMousemove, false);
     window.addEventListener('resize', this.onResize, false);
     window.addEventListener('wheel', this.onWheel, false);
-    // window.addEventListener('touchstart', this.onTouchstart, false);
-    // window.addEventListener('touchmove', this.onTouchmove , false);
+    window.addEventListener('touchstart', this.onTouchstart, false);
+    window.addEventListener('touchend', this.onTouchend, false);
+    window.addEventListener('touchmove', this.onTouchmove , false);
   }
 
   async componentDidUpdate() {
@@ -95,8 +101,9 @@ class Board extends React.Component {
     window.removeEventListener('mousemove', this.onMousemove, false);
     window.removeEventListener('resize', this.onResize, false);
     window.removeEventListener('wheel', this.onWheel, false);
-    // window.removeEventListener('touchstart', this.onTouchstart, false);
-    // window.removeEventListener('touchmove', this.onTouchmove, false);
+    window.removeEventListener('touchstart', this.onTouchstart, false);
+    window.removeEventListener('touchend', this.onTouchend, false);
+    window.removeEventListener('touchmove', this.onTouchmove, false);
   }
 
   getEsperData() {
@@ -420,23 +427,26 @@ class Board extends React.Component {
     });
   }
 
+  movePosition(x, y) {
+    const { mousedownPosition } = this.state
+    this.moveCamera2D(-((x - mousedownPosition.x) / 2), (y - mousedownPosition.y) / 2);
+    // 基準点の更新
+    setTimeout(() => {
+      this.setState({
+        mousedownPosition: {
+          x: x,
+          y: y
+        }
+      });
+    }, 500)
+    this.resetDomPosition();
+  }
+
   onMousemove(e) {
     if (e.target.id !== 'lables' || !this.isGetEsperData) return
-    const {
-      mousedownPosition,
-      mouseDown
-    } = this.state
+    const { mouseDown } = this.state
     if (mouseDown) {
-      this.moveCamera2D(-((e.pageX - mousedownPosition.x) / 2), (e.pageY - mousedownPosition.y) / 2);
-      setTimeout(() => {
-        this.setState({
-          mousedownPosition: {
-            x: e.pageX,
-            y: e.pageY
-          }
-        });
-      }, 500)
-      this.resetDomPosition();
+      this.movePosition(e.pageX, e.pageY);
     } else {
       const rect = e.target.getBoundingClientRect()
       const x = e.clientX - rect.left;
@@ -485,11 +495,60 @@ class Board extends React.Component {
   }
 
   onTouchstart(e) {
-    // console.log('on touch start', e.changedTouches[0])
+    const touchObject = e.changedTouches[0];
+    if (!this.isGetEsperData) return
+    this.setState({
+      mouseDown: true,
+      mousedownPosition: {
+        x: touchObject.pageX,
+        y: touchObject.pageY
+      }
+    });
+    // 2本指(ピンチイン/ピンチアウト)の時
+    if(e.touches.length > 1){
+      //絶対値を取得
+      const touchstartWidth = Math.abs(e.touches[1].pageX - e.touches[0].pageX);
+      const touchstartHeight = Math.abs(e.touches[1].pageY - e.touches[0].pageY);
+      //はじめに2本指タッチした時の面積
+      this.touchstartArea = touchstartWidth * touchstartHeight;
+    }
+  }
+
+  onTouchend() {
+    if (!this.isGetEsperData) return
+    this.setState({
+      mouseDown: false,
+      mousedownPosition: {
+        x: 0,
+        y: 0
+      }
+    });
   }
 
   onTouchmove(e) {
-    // console.log('on touch move', e.changedTouches[0])
+    const { mouseDown } = this.state;
+    const touchObject = e.changedTouches[0];
+    if (e.target.id !== 'lables' || !this.isGetEsperData) return
+    const { mouseDown } = this.state
+    if (mouseDown) this.movePosition(touchObject.pageX, touchObject.pageY);
+
+    // 2本指(ピンチイン/ピンチアウト)の時
+    if(e.touches.length > 1) {
+      //絶対値を取得
+      const touchmoveWidth = Math.abs(e.touches[1].pageX - e.touches[0].pageX);
+      const touchmoveHeight = Math.abs(e.touches[1].pageY - e.touches[0].pageY);
+      //ムーブした時の面積
+      const touchmoveArea = touchmoveWidth * touchmoveHeight;
+      //はじめに2タッチ面積からムーブした時の面積を引く
+      const areaAbsoluteValue = this.touchstartArea - touchmoveArea;
+      if(areaAbsoluteValue < 0) {
+        //拡大する
+        this.ratio *= 1.1;
+      } else if(areaAbsoluteValue > 0) {
+        //縮小する
+        this.ratio *= 0.9;
+      }
+    }
   }
 
   resetDomPosition() {
@@ -619,6 +678,8 @@ class Board extends React.Component {
           <div className={styles.activeMesh}>
             <h3 className={styles.spWrap}>
               <span className={styles.sp}>SP: </span>
+              {/* ↓後でけす。テスト用 */}
+              <span>{this.ratio}</span>
               <span className={styles.stockSp}>{stockSp}</span>
               <div
                 className={styles.meter}
