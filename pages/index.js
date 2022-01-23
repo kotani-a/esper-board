@@ -342,8 +342,8 @@ function QuickSearchToolbar(props) {
       }}
     >
       <div>
-        <GridToolbarColumnsButton sx={{ mr: 3 }} />
-        <GridToolbarFilterButton sx={{ mr: 3 }} />
+        <GridToolbarColumnsButton sx={{ mr: 1.5 }} />
+        <GridToolbarFilterButton sx={{ mr: 1 }} />
         <GridToolbarDensitySelector />
       </div>
       <TextField

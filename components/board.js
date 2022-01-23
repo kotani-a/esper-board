@@ -23,6 +23,8 @@ import { Raycaster } from 'node_modules/three/src/core/Raycaster';
 // import { Color } from 'node_modules/three/src/math/Color';
 
 import Fab from '@mui/material/Fab';
+import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -30,8 +32,16 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-
+import { styled } from '@mui/material/styles';
 import styles from '../styles/board.module.scss'
+
+const StyledButton = styled(Button)({
+  borderColor: '#89CC25',
+  color: "#89CC25",
+  "&:hover": {
+    borderColor: '#4F7515'
+  }
+});
 
 class Board extends React.Component {
   constructor(props) {
@@ -68,6 +78,8 @@ class Board extends React.Component {
     window.addEventListener('mousemove', this.onMousemove, false);
     window.addEventListener('resize', this.onResize, false);
     window.addEventListener('wheel', this.onWheel, false);
+    // window.addEventListener('touchstart', this.onTouchstart, false);
+    // window.addEventListener('touchmove', this.onTouchmove , false);
   }
 
   async componentDidUpdate() {
@@ -83,6 +95,8 @@ class Board extends React.Component {
     window.removeEventListener('mousemove', this.onMousemove, false);
     window.removeEventListener('resize', this.onResize, false);
     window.removeEventListener('wheel', this.onWheel, false);
+    // window.removeEventListener('touchstart', this.onTouchstart, false);
+    // window.removeEventListener('touchmove', this.onTouchmove, false);
   }
 
   getEsperData() {
@@ -414,6 +428,14 @@ class Board extends React.Component {
     } = this.state
     if (mouseDown) {
       this.moveCamera2D(-((e.pageX - mousedownPosition.x) / 2), (e.pageY - mousedownPosition.y) / 2);
+      setTimeout(() => {
+        this.setState({
+          mousedownPosition: {
+            x: e.pageX,
+            y: e.pageY
+          }
+        });
+      }, 500)
       this.resetDomPosition();
     } else {
       const rect = e.target.getBoundingClientRect()
@@ -460,6 +482,14 @@ class Board extends React.Component {
   onWheel(e) {
     this.moveCamera('z', -e.wheelDelta);
     this.resetDomPosition();
+  }
+
+  onTouchstart(e) {
+    // console.log('on touch start', e.changedTouches[0])
+  }
+
+  onTouchmove(e) {
+    // console.log('on touch move', e.changedTouches[0])
   }
 
   resetDomPosition() {
@@ -597,13 +627,13 @@ class Board extends React.Component {
             </h3>
             <h3 className={styles.activeAbilityTitle}>
               <span className={styles.activeAbilityTitleText}>発動アビリティ</span>
-              <Fab
+              <IconButton
                 aria-label="activeAbilityReset"
                 size="small"
                 onClick={() => this.activeAbilityReset()}
               >
-                <RestartAltIcon />
-              </Fab>
+                <RestartAltIcon fontSize="small"/>
+              </IconButton>
             </h3>
             {this.sumActiveAbilityArray().map((activeMech, i) =>
               <h4
@@ -622,66 +652,64 @@ class Board extends React.Component {
           <menu className={styles.controlButtons}>
             <h3 className={styles.cameraPositionTitle}>
               <span className={styles.cameraPositionTitleText}>カメラ位置</span>
-              <Fab
+              <IconButton
                 aria-label="cameraPositionReset"
                 size="small"
                 onClick={() => this.cameraPositionReset()}
               >
-                <RestartAltIcon />
-              </Fab>
-            </h3>
-            <div className={styles.zoomButtons}>
-              <Fab
+                <RestartAltIcon fontSize="small" />
+              </IconButton>
+              <IconButton
                 aria-label="zoomIn"
                 size="small"
-                className={styles.zoomIn}
                 onClick={() => this.zoomIn()}
               >
-                <ZoomInIcon />
-              </Fab>
-              <Fab
-              aria-label="zoomOut"
-              size="small"
-              className={styles.zoomOut}
-              onClick={() => this.zoomOut()}
+                <ZoomInIcon fontSize="small" />
+              </IconButton>
+              <IconButton
+                aria-label="zoomOut"
+                size="small"
+                onClick={() => this.zoomOut()}
               >
-                <ZoomOutIcon />
-              </Fab>
-            </div>
+                <ZoomOutIcon fontSize="small" />
+              </IconButton>
+            </h3>
             <div>
               <div className={styles.menuRow}>
-                <Fab
-                aria-label="moveTop"
-                size="small"
-                onClick={() => this.moveTop()}
+                <StyledButton
+                  variant="outlined"
+                  aria-label="moveTop"
+                  size="small"
+                  onClick={() => this.moveTop()}
                 >
                   <ArrowDropUpIcon />
-                </Fab>
+                </StyledButton>
               </div>
               <div className={styles.menuRow}>
-                <Fab
+                <StyledButton
+                  variant="outlined"
                   aria-label="moveLeft"
                   size="small"
                   onClick={() => this.moveLeft()}
                 >
                   <ArrowLeftIcon />
-                </Fab>
-                <Fab
-                aria-label="moveRight"
-                size="small"
-                onClick={() => this.moveRight()}
-                >
-                  <ArrowRightIcon />
-                </Fab>
-              </div>
-              <div className={styles.menuRow}>
-                <Fab
+                </StyledButton>
+                <StyledButton
+                  variant="outlined"
                   aria-label="moveBottom"
                   size="small"
                   onClick={() => this.moveBottom()}
                 >
                   <ArrowDropDownIcon />
-                </Fab>
+                </StyledButton>
+                <StyledButton
+                  variant="outlined"
+                  aria-label="moveRight"
+                  size="small"
+                  onClick={() => this.moveRight()}
+                >
+                  <ArrowRightIcon />
+                </StyledButton>
               </div>
             </div>
           </menu>

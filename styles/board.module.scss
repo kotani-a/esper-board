@@ -1,9 +1,7 @@
 .board {
   position: relative;
   .panel {
-    // background-color: rgba(170, 146, 88, 0.9);
     background-color: rgba(255, 255, 255, 0.9);
-    // border-left: 2px solid #ffffb5;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
     width: 240px;
     height: 100%;
@@ -53,7 +51,6 @@
     .controlButtons {
       position: fixed;
       bottom: 0;
-      // background-color: greenyellow;
       margin-bottom: 12px;
       display: flex;
       flex-direction: column;
@@ -61,22 +58,16 @@
       z-index: 1;
       .cameraPositionTitle {
         font-size: 20px;
-        margin-bottom: 4px;
+        margin-bottom: 12px;
         .cameraPositionTitleText {
           margin-right: 8px;
         }
       }
-      .zoomButtons {
-        margin-bottom: 12px;
-        .zoomIn {
-          margin-right: 8px;
-        }
-      }
       .menuRow {
-        width: 120px;
         display: flex;
-        &:nth-child(1),&:nth-child(3) {
+        &:nth-child(1) {
           justify-content: center;
+          margin-bottom: 4px;
         }
         &:nth-child(2) {
           justify-content: space-between;
@@ -86,9 +77,6 @@
   }
   .myCanvas {
     background-image: radial-gradient(#3e3222, #111111);
-    .hex {
-      // position: absolute;
-    }
   }
   .lables {
     position: absolute;
