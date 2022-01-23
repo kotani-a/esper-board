@@ -494,6 +494,7 @@ class Board extends React.Component {
   }
 
   onTouchstart(e) {
+    e.preventDefault();
     const touchObject = e.changedTouches[0];
     if (!this.isGetEsperData) return
     this.setState({
@@ -525,6 +526,7 @@ class Board extends React.Component {
   }
 
   onTouchmove(e) {
+    e.preventDefault();
     const { mouseDown } = this.state;
     const touchObject = e.changedTouches[0];
     if (e.target.id !== 'lables' || !this.isGetEsperData) return
