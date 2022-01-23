@@ -529,7 +529,6 @@ class Board extends React.Component {
     const { mouseDown } = this.state;
     const touchObject = e.changedTouches[0];
     if (e.target.id !== 'lables' || !this.isGetEsperData) return
-    const { mouseDown } = this.state
     if (mouseDown) this.movePosition(touchObject.pageX, touchObject.pageY);
 
     // 2本指(ピンチイン/ピンチアウト)の時
