@@ -49,7 +49,6 @@ class Board extends React.Component {
     this.esperData = {};
     this.isGetEsperData = false;
     this.touchstartArea = 0;
-    this.ratio = 0;
     this.state = {
       activeMeshList: [],
       stockSp: 0,
@@ -542,10 +541,12 @@ class Board extends React.Component {
       const areaAbsoluteValue = this.touchstartArea - touchmoveArea;
       if(areaAbsoluteValue < 0) {
         //拡大する
-        this.ratio *= 1.1;
+        this.moveCamera('z', areaAbsoluteValue);
+        this.resetDomPosition();
       } else if(areaAbsoluteValue > 0) {
         //縮小する
-        this.ratio *= 0.9;
+        this.moveCamera('z', -areaAbsoluteValue);
+        this.resetDomPosition();
       }
     }
   }
@@ -677,10 +678,6 @@ class Board extends React.Component {
           <div className={styles.activeMesh}>
             <h3 className={styles.spWrap}>
               <span className={styles.sp}>SP: </span>
-              {/* ↓後でけす。テスト用 */}
-              <span>{this.ratio}</span>
-              {/* ↓後でけす。テスト用 */}
-              <span>{this.touchstartArea}</span>
               <span className={styles.stockSp}>{stockSp}</span>
               <div
                 className={styles.meter}
