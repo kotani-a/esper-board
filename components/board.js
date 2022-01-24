@@ -546,11 +546,11 @@ class Board extends React.Component {
       const areaAbsoluteValue = this.touchstartArea - touchmoveArea;
       if(areaAbsoluteValue < 0) {
         //拡大する
-        this.moveCamera('z', areaAbsoluteValue);
+        this.moveCamera('z', 100);
         this.resetDomPosition();
       } else if(areaAbsoluteValue > 0) {
         //縮小する
-        this.moveCamera('z', -areaAbsoluteValue);
+        this.moveCamera('z', -100);
         this.resetDomPosition();
       }
     }
