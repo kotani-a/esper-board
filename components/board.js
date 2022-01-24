@@ -54,7 +54,8 @@ class Board extends React.Component {
       stockSp: 0,
       availableSp: 0,
       abilityMaxValues: [],
-      mouseDown :false,
+      mouseDown: false,
+      touchMoving: false,
       mousedownPosition: {
         x: 0,
         y: 0
@@ -496,7 +497,9 @@ class Board extends React.Component {
   onTouchstart(e) {
     e.preventDefault();
     const touchObject = e.changedTouches[0];
-    if (!this.isGetEsperData) return
+    const { touchMoving } = this.state;
+
+    if (!this.isGetEsperData || !touchMoving) return
     this.setState({
       mouseDown: true,
       mousedownPosition: {
@@ -523,7 +526,8 @@ class Board extends React.Component {
       mousedownPosition: {
         x: 0,
         y: 0
-      }
+      },
+      touchMoving: false 
     });
   }
 
@@ -531,6 +535,7 @@ class Board extends React.Component {
     e.preventDefault();
     const { mouseDown } = this.state;
     const touchObject = e.changedTouches[0];
+    this.setState({ touchMoving: true });
     if (e.target.id !== 'lables' || !this.isGetEsperData) return
     if (mouseDown) this.movePosition(touchObject.pageX, touchObject.pageY);
 
