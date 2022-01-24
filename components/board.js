@@ -516,6 +516,7 @@ class Board extends React.Component {
   }
 
   onTouchend() {
+    e.preventDefault();
     if (!this.isGetEsperData) return
     this.setState({
       mouseDown: false,
