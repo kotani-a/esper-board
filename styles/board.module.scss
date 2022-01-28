@@ -1,27 +1,36 @@
 .board {
   position: relative;
   .panel {
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
     width: 240px;
-    height: 100%;
     padding: 8px;
     position: fixed;
     right: 0;
     z-index: 5;
+    .spWrap {
+      width: 100%;
+      .sp {
+        font-size: 20px;
+      }
+      .stockSp {
+        font-size: 32px;
+        font-weight: bold;
+      }
+    }
+    .meter,
+    .thinMeter {
+      margin: 4px 0;
+      transition: 1s ease-in;
+      background-color: #adff2f;
+    }
+    .meter {
+      height: 6px;
+    }
+    .thinMeter {
+      height: 3px;
+    }
     .activeMesh {
       display: flex;
       flex-direction: column;
-      .spWrap {
-        margin-bottom: 32px;
-        .sp {
-          font-size: 20px;
-        }
-        .stockSp {
-          font-size: 32px;
-          font-weight: bold;
-        }
-      }
       .activeAbilityTitle {
         margin-bottom: 4px;
         font-size: 20px;
@@ -35,22 +44,10 @@
           font-size: 20px;
         }
       }
-      .meter,
-      .thinMeter {
-        margin: 4px 0;
-        transition: 1s ease-in;
-        background-color: #adff2f;
-      }
-      .meter {
-        height: 6px;
-      }
-      .thinMeter {
-        height: 3px;
-      }
     }
     .controlButtons {
-      position: fixed;
       bottom: 0;
+      margin-top: 36px;
       margin-bottom: 12px;
       display: flex;
       flex-direction: column;
