@@ -739,7 +739,7 @@ class Board extends React.Component {
                     className={styles.activeAbility}
                     key={i}
                   >
-                    <span>{activeMesh.abilityTypeLabel}: </span>
+                    <span className={styles.abilityTypeLabel}>{activeMesh.abilityTypeLabel}: </span>
                     <span className={styles.abilityTypeValue}>{activeMesh.abilityType === 'boostEvocationDamage' ? activeMesh.level : activeMesh.value}</span>
                     <div
                       className={styles.thinMeter}
