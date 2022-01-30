@@ -22,41 +22,8 @@ import { Vector3 } from 'node_modules/three/src/math/Vector3';
 import { Raycaster } from 'node_modules/three/src/core/Raycaster';
 // import { Color } from 'node_modules/three/src/math/Color';
 
-import Fab from '@mui/material/Fab';
-import IconButton from '@mui/material/IconButton';
-import Button from '@mui/material/Button';
-import ZoomInIcon from '@mui/icons-material/ZoomIn';
-import ZoomOutIcon from '@mui/icons-material/ZoomOut';
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import { styled } from '@mui/material/styles';
 import styles from '../styles/board.module.scss'
-
-const StyledButton = styled(Button)({
-  borderColor: '#89CC25',
-  color: "#89CC25",
-  "&:hover": {
-    borderColor: '#4F7515'
-  }
-});
-
-const StyledAccordionSummary = styled(AccordionSummary)({
-  flexDirection: 'column',
-  "& .MuiAccordionSummary-content": {
-    width: '100%'
-  }
-});
-
-const StyledAccordionDetails = styled(AccordionDetails)({
-  padding: '8px',
-});
+import SidePanel from './sidePanel';
 
 class Board extends React.Component {
   constructor(props) {
@@ -77,6 +44,14 @@ class Board extends React.Component {
       }
     };
     this.tick = this.tick.bind(this);
+    this.moveTop = this.moveTop.bind(this);
+    this.moveBottom = this.moveBottom.bind(this);
+    this.moveRight = this.moveRight.bind(this);
+    this.moveLeft = this.moveLeft.bind(this);
+    this.zoomIn = this.zoomIn.bind(this);
+    this.zoomOut = this.zoomOut.bind(this);
+    this.cameraPositionReset = this.cameraPositionReset.bind(this);
+    this.activeAbilityReset = this.activeAbilityReset.bind(this);
     this.onMousedown = this.onMousedown.bind(this);
     this.onMouseup = this.onMouseup.bind(this);
     this.onMousemove = this.onMousemove.bind(this);
@@ -650,7 +625,6 @@ class Board extends React.Component {
 
   activeAbilityReset() {
     this.meshList.map(mesh => {
-      // this.removeActiveMesh(mesh);
       mesh.active = false;
       mesh.disabled = false;
       mesh.material.color.setHex(0x962966);
@@ -710,111 +684,19 @@ class Board extends React.Component {
     return (
       <div id="board" className={styles.board}>
         <div className={styles.panel}>
-          <Accordion>
-            <StyledAccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <h3 className={styles.spWrap}>
-                <span className={styles.sp}>SP: </span>
-                <span className={styles.stockSp}>{stockSp}</span>
-                <div
-                  className={styles.meter}
-                  style={{ width: `${(stockSp/availableSp)*100}%`}}
-                ></div>
-              </h3>
-            </StyledAccordionSummary>
-            <StyledAccordionDetails>
-              <div className={styles.activeMesh}>
-                <h3 className={styles.activeAbilityTitle}>
-                  <span className={styles.activeAbilityTitleText}>発動アビリティ</span>
-                  <IconButton
-                    aria-label="activeAbilityReset"
-                    size="small"
-                    onClick={() => this.activeAbilityReset()}
-                  >
-                    <RestartAltIcon fontSize="small"/>
-                  </IconButton>
-                </h3>
-                {this.sumActiveAbilityArray().map((activeMesh, i) =>
-                  activeMesh.abilityTypeLabel ?
-                  <h4
-                    className={styles.activeAbility}
-                    key={i}
-                  >
-                    <span className={styles.abilityTypeLabel}>{activeMesh.abilityTypeLabel}: </span>
-                    <span className={styles.abilityTypeValue}>{activeMesh.abilityType === 'boostEvocationDamage' ? activeMesh.level : activeMesh.value}</span>
-                    <div
-                      className={styles.thinMeter}
-                      style={{ width: `${(activeMesh.value/activeMesh.maxValue)*100}%`}}
-                    ></div>
-                  </h4>:
-                  <span key={i}>-</span>
-                )}
-              </div>
-              <menu className={styles.controlButtons}>
-                <h3 className={styles.cameraPositionTitle}>
-                  <span className={styles.cameraPositionTitleText}>カメラ位置</span>
-                  <IconButton
-                    aria-label="cameraPositionReset"
-                    size="small"
-                    onClick={() => this.cameraPositionReset()}
-                  >
-                    <RestartAltIcon fontSize="small" />
-                  </IconButton>
-                  <IconButton
-                    aria-label="zoomIn"
-                    size="small"
-                    onClick={() => this.zoomIn()}
-                  >
-                    <ZoomInIcon fontSize="small" />
-                  </IconButton>
-                  <IconButton
-                    aria-label="zoomOut"
-                    size="small"
-                    onClick={() => this.zoomOut()}
-                  >
-                    <ZoomOutIcon fontSize="small" />
-                  </IconButton>
-                </h3>
-                <div>
-                  <div className={styles.menuRow}>
-                    <StyledButton
-                      variant="outlined"
-                      aria-label="moveTop"
-                      size="small"
-                      onClick={() => this.moveTop()}
-                    >
-                      <ArrowDropUpIcon />
-                    </StyledButton>
-                  </div>
-                  <div className={styles.menuRow}>
-                    <StyledButton
-                      variant="outlined"
-                      aria-label="moveLeft"
-                      size="small"
-                      onClick={() => this.moveLeft()}
-                    >
-                      <ArrowLeftIcon />
-                    </StyledButton>
-                    <StyledButton
-                      variant="outlined"
-                      aria-label="moveBottom"
-                      size="small"
-                      onClick={() => this.moveBottom()}
-                    >
-                      <ArrowDropDownIcon />
-                    </StyledButton>
-                    <StyledButton
-                      variant="outlined"
-                      aria-label="moveRight"
-                      size="small"
-                      onClick={() => this.moveRight()}
-                    >
-                      <ArrowRightIcon />
-                    </StyledButton>
-                  </div>
-                </div>
-              </menu>
-            </StyledAccordionDetails>
-          </Accordion>
+          <SidePanel
+            stockSp={stockSp}
+            availableSp={availableSp}
+            sumActiveAbilityArray={this.sumActiveAbilityArray()}
+            activeAbilityReset={this.activeAbilityReset}
+            cameraPositionReset={this.cameraPositionReset}
+            zoomIn={this.zoomIn}
+            zoomOut={this.zoomOut}
+            moveTop={this.moveTop}
+            moveBottom={this.moveBottom}
+            moveLeft={this.moveLeft}
+            moveRight={this.moveRight}
+          />
         </div>
         <div>
           <canvas id="myCanvas" className={styles.myCanvas}>
