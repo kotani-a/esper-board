@@ -13,7 +13,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { styled } from '@mui/material/styles';
-import styles from '../styles/sidepanel.module.scss'
+import styles from '../styles/sidePanel.module.scss';
 
 const StyledAccordionSummary = styled(AccordionSummary)({
   flexDirection: 'column',
