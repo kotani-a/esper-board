@@ -7,44 +7,44 @@
       "value": 19
     },
     {
-      "type": "attackSkillChantTimeDown",
-      "value": 200
-    },
-    {
       "type": "aimingUp",
       "value": 7
     },
     {
-      "type": "fireKillerUp",
-      "value": 15
+      "type": "demonKillerUp",
+      "value": 25
     },
     {
       "type": "waterAbilityResistUp",
       "value": 15
     },
     {
-      "type": "waterAbilityAttackUp",
+      "type": "fireAbilityAttackUp",
       "value": 25
     },
     {
-      "type": "slashingResistUp",
-      "value": 25
+      "type": "shootingResistUp",
+      "value": 15
     },
     {
       "type": "criticalUp",
-      "value": 7
+      "value": 15
     },
     {
       "type": "dodgeUp",
       "value": 7
     },
     {
-      "type": "beastkillerUp",
+      "type": "iceKillerUp",
       "value": 25
     },
     {
       "type": "stingUp",
       "value": 15
+    },
+    {
+      "type": "powerUp",
+      "value": 7
     }
   ],
   "board": [
@@ -118,11 +118,11 @@
         },
         {
           "id": "3_plus_1",
-          "lable": "攻撃系アビリティ発動時間短縮50",
+          "lable": "クリティカル発生率+4%",
           "sp": 40,
-          "abilityType": "attackSkillChantTimeDown",
-          "abilityTypeLabel": "攻撃系アビリティ発動時間短縮",
-          "value": 50,
+          "abilityType": "criticalUp",
+          "abilityTypeLabel": "クリティカル発生率",
+          "value": 4,
           "corner": 4,
           "childrenHexs": [
             "1_plus_0",
@@ -135,11 +135,11 @@
         },
         {
           "id": "3_plus_2",
-          "lable": "攻撃系アビリティ発動時間短縮70",
+          "lable": "クリティカル発生率+5%",
           "sp": 50,
-          "abilityType": "attackSkillChantTimeDown",
-          "abilityTypeLabel": "攻撃系アビリティ発動時間短縮",
-          "value": 70,
+          "abilityType": "criticalUp",
+          "abilityTypeLabel": "クリティカル発生率",
+          "value": 5,
           "corner": 5,
           "childrenHexs": [
             "1_plus_0",
@@ -221,10 +221,10 @@
         },
         {
           "id": "2_plus_2",
-          "lable": "火属性キラー+5%",
+          "lable": "射撃耐性+5%",
           "sp": 70,
-          "abilityType": "fireKillerUp",
-          "abilityTypeLabel": "火属性キラー",
+          "abilityType": "shootingResistUp",
+          "abilityTypeLabel": "射撃耐性",
           "value": 5,
           "corner": 3,
           "childrenHexs": [
@@ -237,11 +237,11 @@
         },
         {
           "id": "2_plus_3",
-          "lable": "攻撃系アビリティ発動時間短縮80",
+          "lable": "クリティカル発生率+6%",
           "sp": 60,
-          "abilityType": "attackSkillChantTimeDown",
-          "abilityTypeLabel": "攻撃系アビリティ発動時間短縮",
-          "value": 80,
+          "abilityType": "criticalUp",
+          "abilityTypeLabel": "クリティカル発生率",
+          "value": 6,
           "corner": 6,
           "childrenHexs": [
             "1_plus_0",
@@ -322,10 +322,10 @@
         },
         {
           "id": "1_plus_1",
-          "lable": "火属性キラー+3%",
+          "lable": "射撃耐性+3%",
           "sp": 30,
-          "abilityType": "fireKillerUp",
-          "abilityTypeLabel": "火属性キラー",
+          "abilityType": "shootingResistUp",
+          "abilityTypeLabel": "射撃耐性",
           "value": 3,
           "corner": 5,
           "childrenHexs": [
@@ -339,10 +339,10 @@
         },
         {
           "id": "1_plus_2",
-          "lable": "火属性キラー+4%",
+          "lable": "射撃耐性+4%",
           "sp": 60,
-          "abilityType": "fireKillerUp",
-          "abilityTypeLabel": "火属性キラー",
+          "abilityType": "shootingResistUp",
+          "abilityTypeLabel": "射撃耐性",
           "value": 4,
           "corner": 4,
           "childrenHexs": [
@@ -414,10 +414,10 @@
         },
         {
           "id": "1_minus_3",
-          "lable": "水属性アビリティ攻撃UP+10%",
+          "lable": "火属性アビリティ攻撃UP+10%",
           "sp": 60,
-          "abilityType": "waterAbilityAttackUp",
-          "abilityTypeLabel": "水属性アビリティ攻撃UP",
+          "abilityType": "fireAbilityAttackUp",
+          "abilityTypeLabel": "火属性アビリティ攻撃UP",
           "value": 10,
           "corner": 4,
           "childrenHexs": [
@@ -439,11 +439,11 @@
         {},
         {
           "id": "0_plus_0",
-          "lable": "斬撃耐性+3%",
+          "lable": "悪魔キラー+2%",
           "sp": 10,
-          "abilityType": "slashingResistUp",
-          "abilityTypeLabel": "斬撃耐性",
-          "value": 3,
+          "abilityType": "demonKillerUp",
+          "abilityTypeLabel": "悪魔キラー",
+          "value": 2,
           "corner": 5,
           "childrenHexs": [],
           "parentHexs": [
@@ -455,10 +455,10 @@
         },
         {
           "id": "0_plus_1",
-          "lable": "火属性キラー+3%",
+          "lable": "射撃耐性+3%",
           "sp": 30,
-          "abilityType": "fireKillerUp",
-          "abilityTypeLabel": "火属性キラー",
+          "abilityType": "shootingResistUp",
+          "abilityTypeLabel": "射撃耐性",
           "value": 3,
           "corner": 6,
           "childrenHexs": [
@@ -480,10 +480,10 @@
         {},
         {
           "id": "0_minus_0",
-          "lable": "クリティカル発生率+2%",
+          "lable": "攻撃UP+2%",
           "sp": 10,
-          "abilityType": "criticalUp",
-          "abilityTypeLabel": "クリティカル発生率",
+          "abilityType": "powerUp",
+          "abilityTypeLabel": "攻撃UP",
           "value": 2,
           "corner": 2,
           "childrenHexs": [],
@@ -501,10 +501,10 @@
         },
         {
           "id": "0_minus_1",
-          "lable": "クリティカル発生率+5%",
+          "lable": "攻撃UP+5%",
           "sp": 30,
-          "abilityType": "criticalUp",
-          "abilityTypeLabel": "クリティカル発生率",
+          "abilityType": "powerUp",
+          "abilityTypeLabel": "攻撃UP",
           "value": 5,
           "corner": 2,
           "childrenHexs": [
@@ -519,10 +519,10 @@
         },
         {
           "id": "0_minus_2",
-          "lable": "水属性アビリティ攻撃UP+4%",
+          "lable": "火属性アビリティ攻撃UP+4%",
           "sp": 40,
-          "abilityType": "waterAbilityAttackUp",
-          "abilityTypeLabel": "水属性アビリティ攻撃UP",
+          "abilityType": "fireAbilityAttackUp",
+          "abilityTypeLabel": "火属性アビリティ攻撃UP",
           "value": 4,
           "corner": 2,
           "childrenHexs": [
@@ -537,10 +537,10 @@
         },
         {
           "id": "0_minus_3",
-          "lable": "水属性アビリティ攻撃UP+6%",
+          "lable": "火属性アビリティ攻撃UP+6%",
           "sp": 50,
-          "abilityType": "waterAbilityAttackUp",
-          "abilityTypeLabel": "水属性アビリティ攻撃UP",
+          "abilityType": "fireAbilityAttackUp",
+          "abilityTypeLabel": "火属性アビリティ攻撃UP",
           "value": 6,
           "corner": 3,
           "childrenHexs": [
@@ -579,11 +579,11 @@
         },
         {
           "id": "-1_plus_1",
-          "lable": "斬撃耐性+4%",
+          "lable": "悪魔キラー+3%",
           "sp": 35,
-          "abilityType": "slashingResistUp",
-          "abilityTypeLabel": "斬撃耐性",
-          "value": 4,
+          "abilityType": "demonKillerUp",
+          "abilityTypeLabel": "悪魔キラー",
+          "value": 3,
           "corner": 6,
           "childrenHexs": [
             "0_plus_0"
@@ -596,11 +596,11 @@
         },
         {
           "id": "-1_plus_2",
-          "lable": "斬撃耐性+5%",
+          "lable": "悪魔キラー+4%",
           "sp": 40,
-          "abilityType": "slashingResistUp",
-          "abilityTypeLabel": "斬撃耐性",
-          "value": 5,
+          "abilityType": "demonKillerUp",
+          "abilityTypeLabel": "悪魔キラー",
+          "value": 4,
           "corner": 5,
           "childrenHexs": [
             "0_plus_0",
@@ -620,11 +620,11 @@
       "abilitys": [
         {
           "id": "-1_minus_0",
-          "lable": "獣キラー+3%",
+          "lable": "氷属性キラー+2%",
           "sp": 10,
-          "abilityType": "beastkillerUp",
-          "abilityTypeLabel": "獣キラー",
-          "value": 3,
+          "abilityType": "iceKillerUp",
+          "abilityTypeLabel": "氷属性キラー",
+          "value": 2,
           "corner": 1,
           "childrenHexs": [],
           "parentHexs": [
@@ -636,11 +636,11 @@
         },
         {
           "id": "-1_minus_1",
-          "lable": "獣キラー+4%",
+          "lable": "氷属性キラー+3%",
           "sp": 35,
-          "abilityType": "beastkillerUp",
-          "abilityTypeLabel": "獣キラー",
-          "value": 4,
+          "abilityType": "iceKillerUp",
+          "abilityTypeLabel": "氷属性キラー",
+          "value": 3,
           "corner": 2,
           "childrenHexs": [
             "-1_minus_0"
@@ -653,11 +653,11 @@
         },
         {
           "id": "-1_minus_2",
-          "lable": "獣キラー+5%",
+          "lable": "氷属性キラー+4%",
           "sp": 50,
-          "abilityType": "beastkillerUp",
-          "abilityTypeLabel": "獣キラー",
-          "value": 5,
+          "abilityType": "iceKillerUp",
+          "abilityTypeLabel": "氷属性キラー",
+          "value": 4,
           "corner": 2,
           "childrenHexs": [
             "-1_minus_0",
@@ -670,10 +670,10 @@
         },
         {
           "id": "-1_minus_3",
-          "lable": "水属性アビリティ攻撃UP+5%",
+          "lable": "火属性アビリティ攻撃UP+5%",
           "sp": 40,
-          "abilityType": "waterAbilityAttackUp",
-          "abilityTypeLabel": "水属性アビリティ攻撃UP",
+          "abilityType": "fireAbilityAttackUp",
+          "abilityTypeLabel": "火属性アビリティ攻撃UP",
           "value": 5,
           "corner": 1,
           "childrenHexs": [
@@ -725,10 +725,10 @@
         },
         {
           "id": "-2_plus_2",
-          "lable": "斬撃耐性+6%",
+          "lable": "悪魔キラー+6%",
           "sp": 70,
-          "abilityType": "slashingResistUp",
-          "abilityTypeLabel": "斬撃耐性",
+          "abilityType": "demonKillerUp",
+          "abilityTypeLabel": "悪魔キラー",
           "value": 6,
           "corner": 1,
           "childrenHexs": [
@@ -742,11 +742,11 @@
         },
         {
           "id": "-2_plus_3",
-          "lable": "斬撃耐性+7%",
+          "lable": "悪魔キラー+10%",
           "sp": 90,
-          "abilityType": "slashingResistUp",
-          "abilityTypeLabel": "斬撃耐性",
-          "value": 7,
+          "abilityType": "demonKillerUp",
+          "abilityTypeLabel": "悪魔キラー",
+          "value": 10,
           "corner": 5,
           "childrenHexs": [
             "0_plus_0",
@@ -783,10 +783,10 @@
         },
         {
           "id": "-2_minus_1",
-          "lable": "獣キラー+6%",
+          "lable": "氷属性キラー+6%",
           "sp": 40,
-          "abilityType": "beastkillerUp",
-          "abilityTypeLabel": "獣キラー",
+          "abilityType": "iceKillerUp",
+          "abilityTypeLabel": "氷属性キラー",
           "value": 6,
           "corner": 6,
           "childrenHexs": [
@@ -800,11 +800,11 @@
         },
         {
           "id": "-2_minus_2",
-          "lable": "獣キラー+7%",
+          "lable": "氷属性キラー+10%",
           "sp": 80,
-          "abilityType": "beastkillerUp",
-          "abilityTypeLabel": "獣キラー",
-          "value": 7,
+          "abilityType": "iceKillerUp",
+          "abilityTypeLabel": "氷属性キラー",
+          "value": 10,
           "corner": 2,
           "childrenHexs": [
             "-1_minus_0",

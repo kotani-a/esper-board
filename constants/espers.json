@@ -21,8 +21,8 @@
     "maxShield": 0,
     "barrier": 0,
     "maxBarrier": 0,
-    "dexterity": 0,
-    "maxDexterity": 0,
+    "dexterity": 29,
+    "maxDexterity": 82,
     "speed": 12,
     "maxSpeed": 19,
     "luck": 27,
@@ -112,8 +112,8 @@
     "maxShield": 0,
     "barrier": 0,
     "maxBarrier": 0,
-    "dexterity": 0,
-    "maxDexterity": 0,
+    "dexterity": 24,
+    "maxDexterity": 66,
     "speed": 10,
     "maxSpeed": 15,
     "luck": 29,
@@ -174,6 +174,94 @@
     "esperMagic": {
       "name": "地獄の火炎",
       "effect": "範囲内の対象に火属性のダメージ(極大)&一定期間マップ効果発動(味方の攻撃・魔力アップ&敵の火属性耐性大幅ダウン)"
+    },
+    "limited": false
+  },
+  {
+    "id": "e3",
+    "created": "2022-01-30T15:15:00",
+    "name": "ゴーレム",
+    "element": "soil",
+    "rarity": 5,
+    "cost": 40,
+    "awakening": 3,
+    "hp": 94,
+    "maxHp": 1452,
+    "tp": 18,
+    "maxTp": 36,
+    "ap": 22,
+    "maxAp": 36,
+    "power": 33,
+    "maxPower": 114,
+    "magic": 15,
+    "maxMagic": 43,
+    "shield": 0,
+    "maxShield": 0,
+    "barrier": 0,
+    "maxBarrier": 0,
+    "dexterity": 29,
+    "maxDexterity": 79,
+    "speed": 8,
+    "maxSpeed": 12,
+    "luck": 30,
+    "maxLuck": 79,
+    "elementResist": [
+      {
+        "name": "雷属性",
+        "value": "10",
+        "conditions": ""
+      },
+      {
+        "name": "風属性",
+        "value": "-5",
+        "conditions": ""
+      }
+    ],
+    "debuffResist": [
+      {
+        "name": "混乱",
+        "value": "25",
+        "conditions": "覚醒3"
+      }
+    ],
+    "boardBuffs": [
+      {
+        "type": "ステータスアップ",
+        "buffs": [
+          "TPUP",
+          "回避率UP",
+          "クリティカル回避率",
+          "防御UP"
+        ]
+      },
+      {
+        "type": "攻撃アップ",
+        "buffs": [
+          ""
+        ]
+      },
+      {
+        "type": "耐性アップ",
+        "buffs": [
+          "刺突耐性",
+          "土耐性"
+        ]
+      },
+      {
+        "type": "キラーアップ",
+        "buffs": [
+          "風属性キラー",
+          "人キラー"    
+        ]
+      },
+      {
+        "type": "その他",
+        "buffs": ["召喚魔法Lv"]
+      }
+    ],
+    "esperMagic": {
+      "name": "フラグメンタルロック",
+      "effect": "範囲内の対象に土属性のダメージ(極大)&一定期間マップ効果発動(味方の攻撃・魔力アップ&敵の土属性耐性大幅ダウン)"
     },
     "limited": false
   }

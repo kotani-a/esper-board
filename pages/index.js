@@ -283,6 +283,24 @@ const columns = [
     hide: true
   },
   {
+    field: 'maxDexterity',
+    headerName: '最大器用さ',
+    type: 'number',
+    width: 120,
+    editable: false,
+    popover: false,
+    hide: true
+  },
+  {
+    field: 'dexterity',
+    headerName: '器用さ',
+    type: 'number',
+    width: 120,
+    editable: false,
+    popover: false,
+    hide: true
+  },
+  {
     field: 'maxLuck',
     headerName: '最大運',
     type: 'number',
