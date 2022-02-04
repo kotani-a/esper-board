@@ -1,0 +1,867 @@
+{
+  "awakeningPhase": 3,
+  "availableSp": 652,
+  "abilityMaxValues": [
+    {
+      "type": "boostEvocationDamage",
+      "value": 19
+    },
+    {
+      "type": "aimingUp",
+      "value": 7
+    },
+    {
+      "type": "stingResistUp",
+      "value": 25
+    },
+    {
+      "type": "soilAbilityResistUp",
+      "value": 25
+    },
+    {
+      "type": "soilAbilityAttackUp",
+      "value": 25
+    },
+    {
+      "type": "humankillerUp",
+      "value": 15
+    },
+    {
+      "type": "criticalDodgeUp",
+      "value": 22
+    },
+    {
+      "type": "dodgeUp",
+      "value": 7
+    },
+    {
+      "type": "shieldUp",
+      "value": 15
+    },
+    {
+      "type": "windKillerUp",
+      "value": 15
+    },
+    {
+      "type": "tpUp",
+      "value": 7
+    }
+  ],
+  "board": [
+    {
+      "id": "4_plus",
+      "row": 4,
+      "direction": true,
+      "abilitys": [
+        {
+          "id": "4_plus_0",
+          "lable": "召喚魔法Lv15",
+          "sp": 90,
+          "abilityType": "boostEvocationDamage",
+          "abilityTypeLabel": "召喚魔法Lv",
+          "value": 5,
+          "level": 15,
+          "corner": 4,
+          "childrenHexs": [
+            "1_minus_0",
+            "2_plus_0",
+            "3_plus_0",
+            "3_minus_0"
+          ],
+          "parentHexs": [
+            "4_plus_1"
+          ]
+        },
+        {
+          "id": "4_plus_1",
+          "lable": "召喚魔法Lv20",
+          "sp": 90,
+          "abilityType": "boostEvocationDamage",
+          "abilityTypeLabel": "召喚魔法Lv",
+          "value": 5,
+          "level": 20,
+          "corner": 5,
+          "childrenHexs": [
+            "1_minus_0",
+            "2_plus_0",
+            "3_plus_0",
+            "3_minus_0",
+            "4_plus_0"
+          ],
+          "parentHexs": []
+        }
+      ]
+    },
+    {
+      "id": "3_plus",
+      "row": 3,
+      "direction": true,
+      "abilitys": [
+        {
+          "id": "3_plus_0",
+          "lable": "召喚魔法Lv7",
+          "sp": 55,
+          "abilityType": "boostEvocationDamage",
+          "abilityTypeLabel": "召喚魔法Lv",
+          "value": 3,
+          "level": 7,
+          "corner": 4,
+          "childrenHexs": [
+            "1_minus_0",
+            "2_plus_0"
+          ],
+          "parentHexs": [
+            "4_plus_1",
+            "4_plus_0",
+            "3_minus_0"
+          ]
+        },
+        {
+          "id": "3_plus_1",
+          "lable": "クリティカル回避率+4%",
+          "sp": 40,
+          "abilityType": "criticalDodgeUp",
+          "abilityTypeLabel": "クリティカル回避率",
+          "value": 4,
+          "corner": 4,
+          "childrenHexs": [
+            "1_plus_0",
+            "2_plus_1"
+          ],
+          "parentHexs": [
+            "2_plus_3",
+            "3_plus_2"
+          ]
+        },
+        {
+          "id": "3_plus_2",
+          "lable": "クリティカル回避率+5%",
+          "sp": 50,
+          "abilityType": "criticalDodgeUp",
+          "abilityTypeLabel": "クリティカル回避率",
+          "value": 5,
+          "corner": 5,
+          "childrenHexs": [
+            "1_plus_0",
+            "2_plus_1",
+            "3_plus_1"
+          ],
+          "parentHexs": [
+            "2_plus_3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3_minus",
+      "row": 3,
+      "direction": false,
+      "abilitys": [
+        {
+          "id": "3_minus_0",
+          "lable": "召喚魔法Lv10",
+          "sp": 50,
+          "abilityType": "boostEvocationDamage",
+          "abilityTypeLabel": "召喚魔法Lv",
+          "value": 3,
+          "level": 10,
+          "corner": 2,
+          "childrenHexs": [
+            "1_minus_0",
+            "2_plus_0",
+            "3_plus_0"
+          ],
+          "parentHexs": [
+            "4_plus_1",
+            "4_plus_0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2_plus",
+      "row": 2,
+      "direction": true,
+      "abilitys": [
+        {
+          "id": "2_plus_0",
+          "lable": "召喚魔法Lv4",
+          "sp": 40,
+          "abilityType": "boostEvocationDamage",
+          "abilityTypeLabel": "召喚魔法Lv",
+          "value": 2,
+          "level": 4,
+          "corner": 4,
+          "childrenHexs": [
+            "1_minus_0"
+          ],
+          "parentHexs": [
+            "4_plus_1",
+            "4_plus_0",
+            "3_minus_0",
+            "3_plus_0"
+          ]
+        },
+        {
+          "id": "2_plus_1",
+          "lable": "クリティカル回避率+4",
+          "sp": 30,
+          "abilityType": "criticalDodgeUp",
+          "abilityTypeLabel": "クリティカル回避率",
+          "value": 4,
+          "corner": 4,
+          "childrenHexs": [
+            "1_plus_0"
+          ],
+          "parentHexs": [
+            "2_plus_3",
+            "3_plus_2",
+            "3_plus_1"
+          ]
+        },
+        {
+          "id": "2_plus_2",
+          "lable": "人キラー+5%",
+          "sp": 70,
+          "abilityType": "humankillerUp",
+          "abilityTypeLabel": "人キラー",
+          "value": 5,
+          "corner": 3,
+          "childrenHexs": [
+            "1_plus_0",
+            "1_plus_1",
+            "0_plus_1",
+            "1_plus_2"
+          ],
+          "parentHexs": []
+        },
+        {
+          "id": "2_plus_3",
+          "lable": "クリティカル回避率+6%",
+          "sp": 60,
+          "abilityType": "criticalDodgeUp",
+          "abilityTypeLabel": "クリティカル回避率",
+          "value": 6,
+          "corner": 6,
+          "childrenHexs": [
+            "1_plus_0",
+            "2_plus_1",
+            "3_plus_1",
+            "3_plus_2"
+          ],
+          "parentHexs": []
+        }
+      ]
+    },
+    {
+      "id": "2_minus",
+      "row": 2,
+      "direction": false,
+      "abilitys": [
+        {},
+        {
+          "id": "2_minus_0",
+          "lable": "土耐性+5%",
+          "sp": 30,
+          "abilityType": "soilAbilityResistUp",
+          "abilityTypeLabel": "土耐性",
+          "value": 5,
+          "corner": 4,
+          "childrenHexs": [
+            "0_minus_0",
+            "1_minus_1"
+          ],
+          "parentHexs": [
+            "1_minus_2",
+            "2_minus_1"
+          ]
+        },
+        {
+          "id": "2_minus_1",
+          "lable": "土耐性+6%",
+          "sp": 60,
+          "abilityType": "soilAbilityResistUp",
+          "abilityTypeLabel": "土耐性",
+          "value": 6,
+          "corner": 2,
+          "childrenHexs": [
+            "0_minus_0",
+            "1_minus_1",
+            "2_minus_0"
+          ],
+          "parentHexs": [
+            "1_minus_2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1_plus",
+      "row": 1,
+      "direction": true,
+      "abilitys": [
+        {
+          "id": "1_plus_0",
+          "lable": "クリティカル回避率+3",
+          "sp": 10,
+          "abilityType": "criticalDodgeUp",
+          "abilityTypeLabel": "クリティカル回避率",
+          "value": 3,
+          "corner": 4,
+          "childrenHexs": [],
+          "parentHexs": [
+            "2_plus_3",
+            "3_plus_2",
+            "3_plus_1",
+            "2_plus_1",
+            "2_plus_2",
+            "1_plus_2",
+            "0_plus_1",
+            "1_plus_1"
+          ]
+        },
+        {
+          "id": "1_plus_1",
+          "lable": "人キラー+3%",
+          "sp": 30,
+          "abilityType": "humankillerUp",
+          "abilityTypeLabel": "人キラー",
+          "value": 3,
+          "corner": 5,
+          "childrenHexs": [
+            "1_plus_0"
+          ],
+          "parentHexs": [
+            "2_plus_2",
+            "1_plus_2",
+            "0_plus_1"
+          ]
+        },
+        {
+          "id": "1_plus_2",
+          "lable": "人キラー+4%",
+          "sp": 60,
+          "abilityType": "humankillerUp",
+          "abilityTypeLabel": "人キラー",
+          "value": 4,
+          "corner": 4,
+          "childrenHexs": [
+            "1_plus_0",
+            "1_plus_1",
+            "0_plus_1"
+          ],
+          "parentHexs": [
+            "2_plus_2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1_minus",
+      "row": 1,
+      "direction": false,
+      "abilitys": [
+        {
+          "id": "1_minus_0",
+          "lable": "召喚魔法Lv2",
+          "sp": 10,
+          "abilityType": "boostEvocationDamage",
+          "abilityTypeLabel": "召喚魔法Lv",
+          "value": 1,
+          "level": 2,
+          "corner": 3,
+          "childrenHexs": [],
+          "parentHexs": [
+            "4_plus_1",
+            "4_plus_0",
+            "3_minus_0",
+            "3_plus_0",
+            "2_plus_0"
+          ]
+        },
+        {
+          "id": "1_minus_1",
+          "lable": "土耐性+4%",
+          "sp": 30,
+          "abilityType": "soilAbilityResistUp",
+          "abilityTypeLabel": "土耐性",
+          "value": 4,
+          "corner": 3,
+          "childrenHexs": [
+            "0_minus_0"
+          ],
+          "parentHexs": [
+            "1_minus_2",
+            "2_minus_1",
+            "2_minus_0"
+          ]
+        },
+        {
+          "id": "1_minus_2",
+          "lable": "土耐性+10%",
+          "sp": 40,
+          "abilityType": "soilAbilityResistUp",
+          "abilityTypeLabel": "土耐性",
+          "value": 10,
+          "corner": 1,
+          "childrenHexs": [
+            "0_minus_0",
+            "1_minus_1",
+            "2_minus_0",
+            "2_minus_1"
+          ],
+          "parentHexs": []
+        },
+        {
+          "id": "1_minus_3",
+          "lable": "土属性アビリティ攻撃UP+10%",
+          "sp": 60,
+          "abilityType": "soilAbilityAttackUp",
+          "abilityTypeLabel": "土属性アビリティ攻撃UP",
+          "value": 10,
+          "corner": 4,
+          "childrenHexs": [
+            "0_minus_0",
+            "0_minus_1",
+            "0_minus_2",
+            "-1_minus_3",
+            "0_minus_3"
+          ],
+          "parentHexs": []
+        }
+      ]
+    },
+    {
+      "id": "0_plus",
+      "row": 0,
+      "direction": true,
+      "abilitys": [
+        {},
+        {
+          "id": "0_plus_0",
+          "lable": "刺突耐性+3%",
+          "sp": 10,
+          "abilityType": "stingResistUp",
+          "abilityTypeLabel": "刺突耐性",
+          "value": 3,
+          "corner": 5,
+          "childrenHexs": [],
+          "parentHexs": [
+            "-2_plus_3",
+            "-2_plus_2",
+            "-1_plus_2",
+            "-1_plus_1"
+          ]
+        },
+        {
+          "id": "0_plus_1",
+          "lable": "人キラー+3%",
+          "sp": 30,
+          "abilityType": "humankillerUp",
+          "abilityTypeLabel": "人キラー",
+          "value": 3,
+          "corner": 6,
+          "childrenHexs": [
+            "1_plus_0",
+            "1_plus_1"
+          ],
+          "parentHexs": [
+            "2_plus_2",
+            "1_plus_2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0_minus",
+      "row": 0,
+      "direction": false,
+      "abilitys": [
+        {},
+        {
+          "id": "0_minus_0",
+          "lable": "TPUP+2%",
+          "sp": 10,
+          "abilityType": "tpUp",
+          "abilityTypeLabel": "TPUP",
+          "value": 2,
+          "corner": 2,
+          "childrenHexs": [],
+          "parentHexs": [
+            "1_minus_2",
+            "2_minus_1",
+            "2_minus_0",
+            "1_minus_1",
+            "1_minus_3",
+            "0_minus_3",
+            "-1_minus_3",
+            "0_minus_2",
+            "0_minus_1"
+          ]
+        },
+        {
+          "id": "0_minus_1",
+          "lable": "TPUP+5%",
+          "sp": 30,
+          "abilityType": "tpUp",
+          "abilityTypeLabel": "TPUP",
+          "value": 5,
+          "corner": 2,
+          "childrenHexs": [
+            "0_minus_0"
+          ],
+          "parentHexs": [
+            "1_minus_3",
+            "0_minus_3",
+            "-1_minus_3",
+            "0_minus_2"
+          ]
+        },
+        {
+          "id": "0_minus_2",
+          "lable": "土属性アビリティ攻撃UP+4%",
+          "sp": 40,
+          "abilityType": "soilAbilityAttackUp",
+          "abilityTypeLabel": "土属性アビリティ攻撃UP",
+          "value": 4,
+          "corner": 2,
+          "childrenHexs": [
+            "0_minus_0",
+            "0_minus_1"
+          ],
+          "parentHexs": [
+            "1_minus_3",
+            "0_minus_3",
+            "-1_minus_3"
+          ]
+        },
+        {
+          "id": "0_minus_3",
+          "lable": "土属性アビリティ攻撃UP+6%",
+          "sp": 50,
+          "abilityType": "soilAbilityAttackUp",
+          "abilityTypeLabel": "土属性アビリティ攻撃UP",
+          "value": 6,
+          "corner": 3,
+          "childrenHexs": [
+            "0_minus_0",
+            "0_minus_1",
+            "0_minus_2",
+            "-1_minus_3"
+          ],
+          "parentHexs": [
+            "1_minus_3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "-1_plus",
+      "row": -1,
+      "direction": true,
+      "abilitys": [
+        {
+          "id": "-1_plus_0",
+          "lable": "回避率+3%",
+          "sp": 10,
+          "abilityType": "dodgeUp",
+          "abilityTypeLabel": "回避率",
+          "value": 3,
+          "corner": 6,
+          "childrenHexs": [],
+          "parentHexs": [
+            "-2_plus_1",
+            "-3_plus_0",
+            "-3_minus_0",
+            "-2_minus_0",
+            "-2_plus_0"
+          ]
+        },
+        {
+          "id": "-1_plus_1",
+          "lable": "刺突耐性+4%",
+          "sp": 35,
+          "abilityType": "stingResistUp",
+          "abilityTypeLabel": "刺突耐性",
+          "value": 4,
+          "corner": 6,
+          "childrenHexs": [
+            "0_plus_0"
+          ],
+          "parentHexs": [
+            "-2_plus_3",
+            "-2_plus_2",
+            "-1_plus_2"
+          ]
+        },
+        {
+          "id": "-1_plus_2",
+          "lable": "刺突耐性+5%",
+          "sp": 40,
+          "abilityType": "stingResistUp",
+          "abilityTypeLabel": "刺突耐性",
+          "value": 5,
+          "corner": 5,
+          "childrenHexs": [
+            "0_plus_0",
+            "-1_plus_1"
+          ],
+          "parentHexs": [
+            "-2_plus_3",
+            "-2_plus_2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "-1_minus",
+      "row": -1,
+      "direction": false,
+      "abilitys": [
+        {
+          "id": "-1_minus_0",
+          "lable": "防御UP+1%",
+          "sp": 10,
+          "abilityType": "shieldUp",
+          "abilityTypeLabel": "防御UP",
+          "value": 1,
+          "corner": 1,
+          "childrenHexs": [],
+          "parentHexs": [
+            "-2_minus_2",
+            "-2_minus_1",
+            "-1_minus_2",
+            "-1_minus_1"
+          ]
+        },
+        {
+          "id": "-1_minus_1",
+          "lable": "防御UP+2%",
+          "sp": 35,
+          "abilityType": "shieldUp",
+          "abilityTypeLabel": "防御UP",
+          "value": 2,
+          "corner": 2,
+          "childrenHexs": [
+            "-1_minus_0"
+          ],
+          "parentHexs": [
+            "-2_minus_2",
+            "-2_minus_1",
+            "-1_minus_2"
+          ]
+        },
+        {
+          "id": "-1_minus_2",
+          "lable": "防御UP+4%",
+          "sp": 50,
+          "abilityType": "shieldUp",
+          "abilityTypeLabel": "防御UP",
+          "value": 4,
+          "corner": 2,
+          "childrenHexs": [
+            "-1_minus_0",
+            "-1_minus_1"
+          ],
+          "parentHexs": [
+            "-2_minus_2",
+            "-2_minus_1"
+          ]
+        },
+        {
+          "id": "-1_minus_3",
+          "lable": "土属性アビリティ攻撃UP+5%",
+          "sp": 40,
+          "abilityType": "soilAbilityAttackUp",
+          "abilityTypeLabel": "土属性アビリティ攻撃UP",
+          "value": 5,
+          "corner": 1,
+          "childrenHexs": [
+            "0_minus_0",
+            "0_minus_1",
+            "0_minus_2"
+          ],
+          "parentHexs": [
+            "1_minus_3",
+            "0_minus_3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "-2_plus",
+      "row": -2,
+      "direction": true,
+      "abilitys": [
+        {
+          "id": "-2_plus_0",
+          "lable": "風属性キラー+3%",
+          "sp": 30,
+          "abilityType": "windKillerUp",
+          "abilityTypeLabel": "風属性キラー",
+          "value": 3,
+          "corner": 1,
+          "childrenHexs": [
+            "-1_plus_0"
+          ],
+          "parentHexs": [
+            "-3_plus_0",
+            "-3_minus_0",
+            "-2_minus_0"
+          ]
+        },
+        {
+          "id": "-2_plus_1",
+          "lable": "回避率+4%",
+          "sp": 30,
+          "abilityType": "dodgeUp",
+          "abilityTypeLabel": "回避率",
+          "value": 4,
+          "corner": 6,
+          "childrenHexs": [
+            "-1_plus_0"
+          ],
+          "parentHexs": []
+        },
+        {
+          "id": "-2_plus_2",
+          "lable": "刺突耐性+6%",
+          "sp": 70,
+          "abilityType": "stingResistUp",
+          "abilityTypeLabel": "刺突耐性",
+          "value": 6,
+          "corner": 1,
+          "childrenHexs": [
+            "0_plus_0",
+            "-1_plus_1",
+            "-1_plus_2"
+          ],
+          "parentHexs": [
+            "-2_plus_3"
+          ]
+        },
+        {
+          "id": "-2_plus_3",
+          "lable": "刺突耐性+7%",
+          "sp": 90,
+          "abilityType": "stingResistUp",
+          "abilityTypeLabel": "刺突耐性",
+          "value": 7,
+          "corner": 5,
+          "childrenHexs": [
+            "0_plus_0",
+            "-1_plus_1",
+            "-1_plus_2",
+            "-2_plus_2"
+          ],
+          "parentHexs": []
+        }
+      ]
+    },
+    {
+      "id": "-2_minus",
+      "row": -2,
+      "direction": false,
+      "abilitys": [
+        {},
+        {
+          "id": "-2_minus_0",
+          "lable": "風属性キラー+3%",
+          "sp": 30,
+          "abilityType": "windKillerUp",
+          "abilityTypeLabel": "風属性キラー",
+          "value": 3,
+          "corner": 2,
+          "childrenHexs": [
+            "-1_plus_0",
+            "-2_plus_0"
+          ],
+          "parentHexs": [
+            "-3_plus_0",
+            "-3_minus_0"
+          ]
+        },
+        {
+          "id": "-2_minus_1",
+          "lable": "防御UP+3%",
+          "sp": 40,
+          "abilityType": "shieldUp",
+          "abilityTypeLabel": "防御UP",
+          "value": 3,
+          "corner": 6,
+          "childrenHexs": [
+            "-1_minus_0",
+            "-1_minus_1",
+            "-1_minus_2"
+          ],
+          "parentHexs": [
+            "-2_minus_2"
+          ]
+        },
+        {
+          "id": "-2_minus_2",
+          "lable": "防御UP+5%",
+          "sp": 80,
+          "abilityType": "shieldUp",
+          "abilityTypeLabel": "防御UP",
+          "value": 5,
+          "corner": 2,
+          "childrenHexs": [
+            "-1_minus_0",
+            "-1_minus_1",
+            "-1_minus_2",
+            "-2_minus_1"
+          ],
+          "parentHexs": []
+        }
+      ]
+    },
+    {
+      "id": "-3_plus",
+      "row": -3,
+      "direction": true,
+      "abilitys": [
+        {
+          "id": "-3_plus_0",
+          "lable": "風属性キラー+5%",
+          "sp": 55,
+          "abilityType": "windKillerUp",
+          "abilityTypeLabel": "風属性キラー",
+          "value": 5,
+          "corner": 5,
+          "childrenHexs": [
+            "-1_plus_0",
+            "-2_plus_0",
+            "-2_minus_0",
+            "-3_minus_0"
+          ],
+          "parentHexs": []
+        }
+      ]
+    },
+    {
+      "id": "-3_minus",
+      "row": -3,
+      "direction": false,
+      "abilitys": [
+        {
+          "id": "-3_minus_0",
+          "lable": "風属性キラー+4%",
+          "sp": 60,
+          "abilityType": "windKillerUp",
+          "abilityTypeLabel": "風属性キラー",
+          "value": 4,
+          "corner": 6,
+          "childrenHexs": [
+            "-1_plus_0",
+            "-2_plus_0",
+            "-2_minus_0"
+          ],
+          "parentHexs": [
+            "-3_plus_0"
+          ]
+        }
+      ]
+    }
+  ]
+}

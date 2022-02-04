@@ -1,6 +1,7 @@
 import React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import Chip from '@mui/material/Chip';
 
 export default function BuffsPopOver(props) {
   return (
@@ -24,9 +25,19 @@ export default function BuffsPopOver(props) {
       >
         {props.value && props.value.map((buffs, i) => {
           return (
-            <div key={i}>
-              <Typography variant="h6" sx={{ px: 1, pt: 1, fontWeight: 'bold' }}>{`${buffs.type}`}</Typography>
-              <Typography sx={{ px: 1 }}>{`${buffs.buffs}`}</Typography>
+            <div key={i} style={{ padding: '8px' }}>
+              <Typography variant="h6" sx={{ fontWeight: 'bold' }}>{`${buffs.type}`}</Typography>
+              {buffs.buffs.map((buff, i) => {
+                return (
+                  <Chip
+                    key={i}
+                    label={`${buff}`}
+                    variant="outlined"
+                    size="small"
+                    sx={{ mr: 1 }}
+                  />
+                )
+              })}
             </div>
           )
         })}

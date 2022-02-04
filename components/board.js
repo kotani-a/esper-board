@@ -332,16 +332,19 @@ class Board extends React.Component {
       activeMeshList,
       stockSp
     } = this.state;
-    if (!targetMesh.active && targetMesh.sp < stockSp) {
-      targetMesh.active = true;
-      const newMeshList = [...activeMeshList, targetMesh];
-      this.setState({
-        activeMeshList: newMeshList,
-        stockSp: stockSp - targetMesh.sp
-      });
-      targetMesh.material.color.setHex(0xB0A341);
-      this.disabledCheck();
-    }
+    return new Promise (resolve => {
+      if (!targetMesh.active && targetMesh.sp < stockSp) {
+        targetMesh.active = true;
+        const newMeshList = [...activeMeshList, targetMesh];
+        this.setState({
+          activeMeshList: newMeshList,
+          stockSp: stockSp - targetMesh.sp
+        });
+        targetMesh.material.color.setHex(0xB0A341);
+        this.disabledCheck();
+      }
+      resolve('resolved');
+    });
   }
 
   removeActiveMesh(targetMesh) {
@@ -356,17 +359,14 @@ class Board extends React.Component {
         activeMeshList: newMeshList,
         stockSp: stockSp + targetMesh.sp
       });
-      // this.setState(state => ({
-      //   activeMeshList: state.activeMeshList.filter(mesh => mesh.meshId !== targetMesh.meshId),
-      //   stockSp: state.stockSp + targetMesh.sp
-      // }));
       targetMesh.material.color.setHex(0x962966);
       this.disabledCheck();
     }
   }
 
-  onMousedown(e) {
-    if (!this.isGetEsperData) return
+  async onMousedown(e) {
+    if (!this.isGetEsperData) return;
+
     this.setState({
       mouseDown: true,
       mousedownPosition: {
@@ -387,15 +387,23 @@ class Board extends React.Component {
     const intersects = this.raycaster.intersectObjects(this.meshList);
     // 交わるオブジェクトが１個以上の場合
     if (intersects.length > 0) {
-      const targetMesh = intersects[0].object
+      const targetMesh = intersects[0].object;
+      let isContinued = true;
       if (!targetMesh.disabled && !targetMesh.active) {
+        // 条件により選択状態にする
         if (targetMesh.childrenHexs.length > 0) {
           for (const childId of targetMesh.childrenHexs) {
-            this.setActiveMesh(this.meshList.find(mesh => mesh.meshId === `mesh${childId}`));
+            const targetChild = this.meshList.find(mesh => mesh.meshId === `mesh${childId}`);
+            if (targetChild.sp < this.state.stockSp && isContinued) {
+              await this.setActiveMesh(targetChild);
+            } else {
+              isContinued = false;
+            }
           }
         }
-        this.setActiveMesh(targetMesh);
+        if (isContinued) this.setActiveMesh(targetMesh);
       } else if (!targetMesh.disabled && targetMesh.active) {
+        // 条件により未選択状態にする
         if (targetMesh.parentHexs.length > 0) {
           for (const childId of targetMesh.parentHexs) {
             this.removeActiveMesh(this.meshList.find(mesh => mesh.meshId === `mesh${childId}`));

@@ -1,8 +1,10 @@
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import ClearIcon from '@mui/icons-material/Clear';
 import SearchIcon from '@mui/icons-material/Search';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import {
   DataGrid,
   GridToolbarColumnsButton,
@@ -16,11 +18,21 @@ import { jaJP as coreJaJP } from '@mui/material/locale';
 import BuffsPopOver from 'components/buffsPopOver';
 import EsperMagicPopOver from 'components/esperMagicPopOver';
 import Link from 'next/link';
+import { useRouter } from 'next/router'
 import { useState } from 'react';
+import { styled } from '@mui/material/styles';
 
 import styles from '../styles/home.module.scss'
 
 import espers from 'constants/espers.json'
+
+const StyledDataGrid = styled(DataGrid)({
+  // "& .MuiDataGrid-cell[data-field='name'], .MuiDataGrid-columnHeader[data-field='name']": {
+  //   backgroundColor: 'white',
+  //   position: 'sticky',
+  //   left: '0'
+  // }
+});
 
 function escapeRegExp(value) {
   return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
@@ -96,14 +108,19 @@ const columns = [
   {
     field: 'name',
     headerName: '名前',
-    width: 180,
+    width: 200,
     editable: false,
     popover: false,
     hide: false,
     renderCell: (params) =>
-      <Link href={`/board/${params.row.id}`}>
-        <a style={{textDecoration: 'underline'}} target="_blank">{params.row.name}</a>
-      </Link>
+      <>
+        <Link href={`/board/${params.row.id}`}>
+          <a style={{textDecoration: 'underline'}} target="_blank">
+            {params.row.name}
+            <OpenInNewIcon style={{verticalAlign: 'middle', marginLeft: '4px'}} />
+          </a>
+        </Link>
+      </>
   },
   {
     field: 'element',
@@ -453,7 +470,7 @@ export default function Home() {
   return (
     <div style={{ height: 400, width: '100%' }}>
       <ThemeProvider theme={theme}>
-        <DataGrid
+        <StyledDataGrid
           rows={rows}
           columns={columns}
           pageSize={5}

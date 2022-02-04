@@ -43,7 +43,7 @@
       {
         "name": "ドンムブ",
         "value": "25",
-        "conditions": "覚醒3"
+        "conditions": "※覚醒3"
       }
     ],
     "boardBuffs": [
@@ -134,7 +134,7 @@
       {
         "name": "ストップ",
         "value": "25",
-        "conditions": "覚醒3"
+        "conditions": "※覚醒3"
       }
     ],
     "boardBuffs": [
@@ -149,7 +149,8 @@
       {
         "type": "攻撃アップ",
         "buffs": [
-          "刺突攻撃UP"
+          "刺突攻撃UP",
+          "火属性アビリティ攻撃UP"
         ]
       },
       {
@@ -221,7 +222,7 @@
       {
         "name": "混乱",
         "value": "25",
-        "conditions": "覚醒3"
+        "conditions": "※覚醒3"
       }
     ],
     "boardBuffs": [
@@ -232,12 +233,6 @@
           "回避率UP",
           "クリティカル回避率",
           "防御UP"
-        ]
-      },
-      {
-        "type": "攻撃アップ",
-        "buffs": [
-          ""
         ]
       },
       {
