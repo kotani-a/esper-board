@@ -327,23 +327,67 @@ class Board extends React.Component {
     });
   }
 
+  transitionColorChange(targetMesh, beforeColor, afterColor) {
+    const step = 20;
+    let count = 1;
+    let beforeRed = parseInt(beforeColor.slice(0, 2), 16);
+    let beforeGreen = parseInt(beforeColor.slice(2, 4), 16);
+    let beforeBlue = parseInt(beforeColor.slice(4, 6), 16);
+
+    const afterRed = parseInt(afterColor.slice(0, 2), 16);
+    const afterGreen = parseInt(afterColor.slice(2, 4), 16);
+    const afterBlue = parseInt(afterColor.slice(4, 6), 16);
+
+    const diffRed = Math.abs(beforeRed - afterRed);
+    const diffGreen = Math.abs(beforeGreen - afterGreen);
+    const diffBlue = Math.abs(beforeBlue - afterBlue);
+
+    const setIntervalId = setInterval(() => {
+      if (step === count) clearInterval(setIntervalId);
+      if (beforeRed > afterRed) {
+        beforeRed = beforeRed - (diffRed/step);
+      } else {
+        beforeRed = beforeRed + (diffRed/step);
+      }
+  
+      if (beforeGreen > afterGreen) {
+        beforeGreen = beforeGreen - (diffGreen/step);
+      } else {
+        beforeGreen = beforeGreen + (diffGreen/step);
+      }
+  
+      if (beforeBlue > afterBlue) {
+        beforeBlue = beforeBlue - (diffBlue/step);
+      } else {
+        beforeBlue = beforeBlue + (diffBlue/step);
+      }
+      const roundRed = Math.round(beforeRed);
+      const roundGreen = Math.round(beforeGreen);
+      const roundBlue = Math.round(beforeBlue);
+      const colorCode = `0x${roundRed.toString(16)}${roundGreen.toString(16)}${roundBlue.toString(16)}`;
+      targetMesh.material.color.setHex(colorCode);
+      count++;
+    }, 20)
+  }
+
   setActiveMesh(targetMesh) {
-    const {
-      activeMeshList,
-      stockSp
-    } = this.state;
+    const { activeMeshList } = this.state;
     return new Promise (resolve => {
-      if (!targetMesh.active && targetMesh.sp < stockSp) {
+      if (!targetMesh.active && targetMesh.sp < this.state.stockSp) {
         targetMesh.active = true;
         const newMeshList = [...activeMeshList, targetMesh];
         this.setState({
           activeMeshList: newMeshList,
-          stockSp: stockSp - targetMesh.sp
+          stockSp: this.state.stockSp - targetMesh.sp
         });
-        targetMesh.material.color.setHex(0xB0A341);
+        this.transitionColorChange(targetMesh, '962966', 'B0A341');
         this.disabledCheck();
+        resolve('accept');
+      } else if (targetMesh.active) {
+        resolve('accept');
+      }else {
+        resolve('reject');
       }
-      resolve('resolved');
     });
   }
 
@@ -364,7 +408,7 @@ class Board extends React.Component {
     }
   }
 
-  async onMousedown(e) {
+  onMousedown(e) {
     if (!this.isGetEsperData) return;
 
     this.setState({
@@ -383,7 +427,7 @@ class Board extends React.Component {
     this.mouse.y = - (y / window.innerHeight) * 2 + 1;
 
     this.raycaster.setFromCamera(this.mouse, this.camera);
-    // // 光線と交わるオブジェクトを収集
+    // 光線と交わるオブジェクトを収集
     const intersects = this.raycaster.intersectObjects(this.meshList);
     // 交わるオブジェクトが１個以上の場合
     if (intersects.length > 0) {
@@ -391,17 +435,18 @@ class Board extends React.Component {
       let isContinued = true;
       if (!targetMesh.disabled && !targetMesh.active) {
         // 条件により選択状態にする
-        if (targetMesh.childrenHexs.length > 0) {
-          for (const childId of targetMesh.childrenHexs) {
-            const targetChild = this.meshList.find(mesh => mesh.meshId === `mesh${childId}`);
-            if (targetChild.sp < this.state.stockSp && isContinued) {
-              await this.setActiveMesh(targetChild);
-            } else {
-              isContinued = false;
-            }
-          }
+        targetMesh.childrenHexs.forEach((childId, index) => {
+          const targetChild = this.meshList.find(mesh => mesh.meshId === `mesh${childId}`);
+          setTimeout(async () => {
+            const result = isContinued ? await this.setActiveMesh(targetChild) : 'reject';
+            if (result === 'reject') isContinued = false;
+          }, 100*index);
+        })
+        if (isContinued) {
+          setTimeout(async () => {
+            isContinued ? await this.setActiveMesh(targetMesh) : null;
+          }, 100*targetMesh.childrenHexs.length);
         }
-        if (isContinued) this.setActiveMesh(targetMesh);
       } else if (!targetMesh.disabled && targetMesh.active) {
         // 条件により未選択状態にする
         if (targetMesh.parentHexs.length > 0) {
