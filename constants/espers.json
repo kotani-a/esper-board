@@ -259,5 +259,87 @@
       "effect": "範囲内の対象に土属性のダメージ(極大)&一定期間マップ効果発動(味方の攻撃・魔力アップ&敵の土属性耐性大幅ダウン)"
     },
     "limited": false
+  },
+  {
+    "id": "e4",
+    "created": "2022-02-07T15:15:00",
+    "name": "ズー",
+    "element": "wind",
+    "rarity": 3,
+    "cost": 20,
+    "awakening": 3,
+    "hp": 70,
+    "maxHp": 1023,
+    "tp": 12,
+    "maxTp": 21,
+    "ap": 14,
+    "maxAp": 23,
+    "power": 18,
+    "maxPower": 60,
+    "magic": 8,
+    "maxMagic": 24,
+    "shield": 0,
+    "maxShield": 0,
+    "barrier": 0,
+    "maxBarrier": 0,
+    "dexterity": 22,
+    "maxDexterity": 64,
+    "speed": 9,
+    "maxSpeed": 15,
+    "luck": 29,
+    "maxLuck": 79,
+    "elementResist": [
+      {
+        "name": "土属性",
+        "value": "5",
+        "conditions": ""
+      },
+      {
+        "name": "氷属性",
+        "value": "-15",
+        "conditions": ""
+      }
+    ],
+    "debuffResist": [
+      {
+        "name": "ドンムブ",
+        "value": "15",
+        "conditions": "※覚醒3"
+      }
+    ],
+    "boardBuffs": [
+      {
+        "type": "ステータスアップ",
+        "buffs": [
+          "TPUP",
+          "HPUP",
+          "攻撃UP",
+          "クリティカル回避率"
+        ]
+      },
+      {
+        "type": "耐性アップ",
+        "buffs": [
+          "魔法耐性",
+          "氷耐性"
+        ]
+      },
+      {
+        "type": "キラーアップ",
+        "buffs": [
+          "土属性キラー",
+          "植物キラー"    
+        ]
+      },
+      {
+        "type": "その他",
+        "buffs": ["召喚魔法Lv"]
+      }
+    ],
+    "esperMagic": {
+      "name": "大旋風",
+      "effect": "自身を中心とした範囲内の対象に風属性のダメージ1ます奥に移動させる"
+    },
+    "limited": false
   }
 ]
