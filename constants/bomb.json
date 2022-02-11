@@ -7,7 +7,7 @@
       "value": 19
     },
     {
-      "type": "magicAttackResistUp",
+      "type": "shootingResistUp",
       "value": 7
     },
     {
@@ -23,7 +23,7 @@
       "value": 15
     },
     {
-      "type": "aimingUp",
+      "type": "criticalDamageUp",
       "value": 15
     },
     {
@@ -35,15 +35,15 @@
       "value": 20
     },
     {
-      "type": "knockingUp",
+      "type": "stingUp",
       "value": 10
     },
     {
-      "type": "iceAbilityResistUp",
+      "type": "waterAbilityResistUp",
       "value": 8
     },
     {
-      "type": "plantKiller",
+      "type": "humankillerUp",
       "value": 15
     }
   ],
@@ -118,10 +118,10 @@
         },
         {
           "id": "3_plus_1",
-          "lable": "命中率+4%",
+          "lable": "クリティカルダメージ+4%",
           "sp": 40,
-          "abilityType": "aimingUp",
-          "abilityTypeLabel": "命中率",
+          "abilityType": "criticalDamageUp",
+          "abilityTypeLabel": "クリティカルダメージ",
           "value": 4,
           "corner": 4,
           "childrenHexs": [
@@ -135,10 +135,10 @@
         },
         {
           "id": "3_plus_2",
-          "lable": "命中率+5%",
+          "lable": "クリティカルダメージ+5%",
           "sp": 50,
-          "abilityType": "aimingUp",
-          "abilityTypeLabel": "命中率",
+          "abilityType": "criticalDamageUp",
+          "abilityTypeLabel": "クリティカルダメージ",
           "value": 5,
           "corner": 5,
           "childrenHexs": [
@@ -204,10 +204,10 @@
         },
         {
           "id": "2_plus_1",
-          "lable": "魔法耐性+4%",
+          "lable": "射撃耐性+4%",
           "sp": 30,
-          "abilityType": "magicAttackResistUp",
-          "abilityTypeLabel": "魔法耐性",
+          "abilityType": "shootingResistUp",
+          "abilityTypeLabel": "射撃耐性",
           "value": 4,
           "corner": 4,
           "childrenHexs": [
@@ -221,10 +221,10 @@
         },
         {
           "id": "2_plus_2",
-          "lable": "植物キラー+6%",
+          "lable": "人キラー+6%",
           "sp": 70,
-          "abilityType": "plantKiller",
-          "abilityTypeLabel": "植物キラー",
+          "abilityType": "humankillerUp",
+          "abilityTypeLabel": "人キラー",
           "value": 6,
           "corner": 3,
           "childrenHexs": [
@@ -236,10 +236,10 @@
         },
         {
           "id": "2_plus_3",
-          "lable": "命中率+6%",
+          "lable": "クリティカルダメージ+6%",
           "sp": 60,
-          "abilityType": "aimingUp",
-          "abilityTypeLabel": "命中率",
+          "abilityType": "criticalDamageUp",
+          "abilityTypeLabel": "クリティカルダメージ",
           "value": 6,
           "corner": 6,
           "childrenHexs": [
@@ -260,10 +260,10 @@
         {},
         {
           "id": "2_minus_0",
-          "lable": "土属性キラー+3%",
+          "lable": "氷属性キラー+3%",
           "sp": 30,
           "abilityType": "soilKillerUp",
-          "abilityTypeLabel": "土属性キラー",
+          "abilityTypeLabel": "氷属性キラー",
           "value": 3,
           "corner": 4,
           "childrenHexs": [
@@ -277,10 +277,10 @@
         },
         {
           "id": "2_minus_1",
-          "lable": "土属性キラー+4%",
+          "lable": "氷属性キラー+4%",
           "sp": 60,
           "abilityType": "soilKillerUp",
-          "abilityTypeLabel": "土属性キラー",
+          "abilityTypeLabel": "氷属性キラー",
           "value": 4,
           "corner": 2,
           "childrenHexs": [
@@ -301,10 +301,10 @@
       "abilitys": [
         {
           "id": "1_plus_0",
-          "lable": "魔法耐性+3%",
+          "lable": "射撃耐性+3%",
           "sp": 10,
-          "abilityType": "magicAttackResistUp",
-          "abilityTypeLabel": "魔法耐性",
+          "abilityType": "shootingResistUp",
+          "abilityTypeLabel": "射撃耐性",
           "value": 3,
           "corner": 4,
           "childrenHexs": [],
@@ -317,10 +317,10 @@
         },
         {
           "id": "1_plus_1",
-          "lable": "植物キラー+3%",
+          "lable": "人キラー+3%",
           "sp": 30,
-          "abilityType": "plantKiller",
-          "abilityTypeLabel": "植物キラー",
+          "abilityType": "humankillerUp",
+          "abilityTypeLabel": "人キラー",
           "value": 3,
           "corner": 4,
           "childrenHexs": [
@@ -334,10 +334,10 @@
         },
         {
           "id": "1_plus_2",
-          "lable": "植物キラー+4%",
+          "lable": "人キラー+4%",
           "sp": 60,
-          "abilityType": "plantKiller",
-          "abilityTypeLabel": "植物キラー",
+          "abilityType": "humankillerUp",
+          "abilityTypeLabel": "人キラー",
           "value": 4,
           "corner": 5,
           "childrenHexs": [
@@ -375,10 +375,10 @@
         },
         {
           "id": "1_minus_1",
-          "lable": "土属性キラー+2%",
+          "lable": "氷属性キラー+2%",
           "sp": 30,
           "abilityType": "soilKillerUp",
-          "abilityTypeLabel": "土属性キラー",
+          "abilityTypeLabel": "氷属性キラー",
           "value": 2,
           "corner": 3,
           "childrenHexs": [
@@ -392,10 +392,10 @@
         },
         {
           "id": "1_minus_2",
-          "lable": "土属性キラー+6%",
+          "lable": "氷属性キラー+6%",
           "sp": 40,
           "abilityType": "soilKillerUp",
-          "abilityTypeLabel": "土属性キラー",
+          "abilityTypeLabel": "氷属性キラー",
           "value": 6,
           "corner": 1,
           "childrenHexs": [
@@ -433,10 +433,10 @@
         {},
         {
           "id": "0_plus_0",
-          "lable": "植物キラー+2%",
+          "lable": "人キラー+2%",
           "sp": 10,
-          "abilityType": "plantKiller",
-          "abilityTypeLabel": "植物キラー",
+          "abilityType": "humankillerUp",
+          "abilityTypeLabel": "人キラー",
           "value": 2,
           "corner": 5,
           "childrenHexs": [],
@@ -479,10 +479,10 @@
         {},
         {
           "id": "0_minus_0",
-          "lable": "氷耐性+3%",
+          "lable": "水耐性+3%",
           "sp": 10,
-          "abilityType": "iceAbilityResistUp",
-          "abilityTypeLabel": "氷耐性",
+          "abilityType": "waterAbilityResistUp",
+          "abilityTypeLabel": "水耐性",
           "value": 3,
           "corner": 2,
           "childrenHexs": [],
@@ -500,10 +500,10 @@
         },
         {
           "id": "0_minus_1",
-          "lable": "氷耐性+5%",
+          "lable": "水耐性+5%",
           "sp": 30,
-          "abilityType": "iceAbilityResistUp",
-          "abilityTypeLabel": "氷耐性",
+          "abilityType": "waterAbilityResistUp",
+          "abilityTypeLabel": "水耐性",
           "value": 5,
           "corner": 2,
           "childrenHexs": [
@@ -696,10 +696,10 @@
       "abilitys": [
         {
           "id": "-2_plus_0",
-          "lable": "打撃攻撃UP+2%",
+          "lable": "刺突攻撃UP+2%",
           "sp": 30,
-          "abilityType": "knockingUp",
-          "abilityTypeLabel": "打撃攻撃UP",
+          "abilityType": "stingUp",
+          "abilityTypeLabel": "刺突攻撃UP",
           "value": 2,
           "corner": 1,
           "childrenHexs": [
@@ -769,10 +769,10 @@
         {},
         {
           "id": "-2_minus_0",
-          "lable": "打撃攻撃UP+2%",
+          "lable": "刺突攻撃UP+2%",
           "sp": 30,
-          "abilityType": "knockingUp",
-          "abilityTypeLabel": "打撃攻撃UP",
+          "abilityType": "stingUp",
+          "abilityTypeLabel": "刺突攻撃UP",
           "value": 2,
           "corner": 2,
           "childrenHexs": [
@@ -826,10 +826,10 @@
       "abilitys": [
         {
           "id": "-3_plus_0",
-          "lable": "打撃攻撃UP+3%",
+          "lable": "刺突攻撃UP+3%",
           "sp": 55,
-          "abilityType": "knockingUp",
-          "abilityTypeLabel": "打撃攻撃UP",
+          "abilityType": "stingUp",
+          "abilityTypeLabel": "刺突攻撃UP",
           "value": 3,
           "corner": 5,
           "childrenHexs": [
@@ -849,10 +849,10 @@
       "abilitys": [
         {
           "id": "-3_minus_0",
-          "lable": "打撃攻撃UP+3%",
+          "lable": "刺突攻撃UP+3%",
           "sp": 60,
-          "abilityType": "knockingUp",
-          "abilityTypeLabel": "打撃攻撃UP",
+          "abilityType": "stingUp",
+          "abilityTypeLabel": "刺突攻撃UP",
           "value": 3,
           "corner": 6,
           "childrenHexs": [

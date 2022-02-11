@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
@@ -19,7 +20,6 @@ import BuffsPopOver from 'components/buffsPopOver';
 import EsperMagicPopOver from 'components/esperMagicPopOver';
 import Link from 'next/link';
 import { useRouter } from 'next/router'
-import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 
 import styles from '../styles/home.module.scss'
@@ -425,6 +425,17 @@ export default function Home() {
   const [esperMagicPopOverValue, setEsperMagicPopOverValue] = useState('');
   const [searchText, setSearchText] = useState('');
   const [rows, setRows] = useState(espers);
+  const [documentHeight, setDocumentHeight] = useState();
+
+  function onResizeHandler() {
+    setDocumentHeight(document.documentElement.clientHeight);
+  }
+
+  useEffect(() => {
+    onResizeHandler();
+    window.addEventListener('resize', onResizeHandler);
+    return () => window.removeEventListener('resize', onResizeHandler);
+  },[]);
 
   const requestSearch = (searchValue) => {
     setSearchText(searchValue);
@@ -468,7 +479,7 @@ export default function Home() {
   );
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ height: `${documentHeight}px`, width: '100%' }}>
       <ThemeProvider theme={theme}>
         <StyledDataGrid
           rows={rows}

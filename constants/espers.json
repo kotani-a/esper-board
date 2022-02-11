@@ -318,6 +318,12 @@
         ]
       },
       {
+        "type": "攻撃アップ",
+        "buffs": [
+          "打撃攻撃UP"
+        ]
+      },
+      {
         "type": "耐性アップ",
         "buffs": [
           "魔法耐性",
@@ -339,6 +345,94 @@
     "esperMagic": {
       "name": "大旋風",
       "effect": "自身を中心とした範囲内の対象に風属性のダメージ1ます奥に移動させる"
+    },
+    "limited": false
+  },
+  {
+    "id": "e5",
+    "created": "2022-02-08T15:15:00",
+    "name": "ボム",
+    "element": "fire",
+    "rarity": 3,
+    "cost": 20,
+    "awakening": 3,
+    "hp": 69,
+    "maxHp": 988,
+    "tp": 12,
+    "maxTp": 23,
+    "ap": 11,
+    "maxAp": 19,
+    "power": 23,
+    "maxPower": 76,
+    "magic": 10,
+    "maxMagic": 29,
+    "shield": 0,
+    "maxShield": 0,
+    "barrier": 0,
+    "maxBarrier": 0,
+    "dexterity": 27,
+    "maxDexterity": 75,
+    "speed": 8,
+    "maxSpeed": 12,
+    "luck": 23,
+    "maxLuck": 67,
+    "elementResist": [
+      {
+        "name": "氷属性",
+        "value": "5",
+        "conditions": ""
+      },
+      {
+        "name": "水属性",
+        "value": "-15",
+        "conditions": ""
+      }
+    ],
+    "debuffResist": [
+      {
+        "name": "麻痺",
+        "value": "15",
+        "conditions": "※覚醒3"
+      }
+    ],
+    "boardBuffs": [
+      {
+        "type": "ステータスアップ",
+        "buffs": [
+          "TPUP",
+          "HPUP",
+          "攻撃UP",
+          "クリティカル回避率"
+        ]
+      },
+      {
+        "type": "攻撃アップ",
+        "buffs": [
+          "刺突攻撃UP"
+        ]
+      },
+      {
+        "type": "耐性アップ",
+        "buffs": [
+          "射撃耐性",
+          "氷耐性"
+        ]
+      },
+      {
+        "type": "キラーアップ",
+        "buffs": [
+          "氷属性キラー",
+          "人キラー"    
+        ]
+      },
+      {
+        "type": "その他",
+        "buffs": ["召喚魔法Lv","クリティカルダメージ"]
+      }
+    ],
+    "esperMagic": {
+      "name": "自爆",
+      "effect": "自身を中心とした範囲内の対象に火属性のダメージその後戦闘不能になる"
     },
     "limited": false
   }
