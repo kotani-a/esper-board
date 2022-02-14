@@ -435,5 +435,93 @@
       "effect": "自身を中心とした範囲内の対象に火属性のダメージその後戦闘不能になる"
     },
     "limited": false
+  },
+  {
+    "id": "e6",
+    "created": "2022-02-11T15:15:00",
+    "name": "サボテンダー",
+    "element": "soil",
+    "rarity": 3,
+    "cost": 20,
+    "awakening": 3,
+    "hp": 70,
+    "maxHp": 822,
+    "tp": 16,
+    "maxTp": 39,
+    "ap": 19,
+    "maxAp": 40,
+    "power": 10,
+    "maxPower": 32,
+    "magic": 26,
+    "maxMagic": 95,
+    "shield": 0,
+    "maxShield": 0,
+    "barrier": 0,
+    "maxBarrier": 0,
+    "dexterity": 27,
+    "maxDexterity": 77,
+    "speed": 8,
+    "maxSpeed": 12,
+    "luck": 32,
+    "maxLuck": 86,
+    "elementResist": [
+      {
+        "name": "雷属性",
+        "value": "5",
+        "conditions": ""
+      },
+      {
+        "name": "風属性",
+        "value": "-15",
+        "conditions": ""
+      }
+    ],
+    "debuffResist": [
+      {
+        "name": "死の宣告",
+        "value": "15",
+        "conditions": "※覚醒3"
+      }
+    ],
+    "boardBuffs": [
+      {
+        "type": "ステータスアップ",
+        "buffs": [
+          "TPUP",
+          "魔力UP",
+          "クリティカル回避率",
+          "クリティカル発生率"
+        ]
+      },
+      {
+        "type": "攻撃アップ",
+        "buffs": [
+          "魔法攻撃UP"
+        ]
+      },
+      {
+        "type": "耐性アップ",
+        "buffs": [
+          "打撃耐性",
+          "土耐性"
+        ]
+      },
+      {
+        "type": "キラーアップ",
+        "buffs": [
+          "雷属性キラー",
+          "人キラー"    
+        ]
+      },
+      {
+        "type": "その他",
+        "buffs": ["召喚魔法Lv"]
+      }
+    ],
+    "esperMagic": {
+      "name": "針千本",
+      "effect": "対象に固定のダメージ（1,000）"
+    },
+    "limited": false
   }
 ]
