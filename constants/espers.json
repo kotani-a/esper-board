@@ -512,15 +512,102 @@
           "雷属性キラー",
           "人キラー"    
         ]
-      },
-      {
-        "type": "その他",
-        "buffs": ["召喚魔法Lv"]
       }
     ],
     "esperMagic": {
       "name": "針千本",
       "effect": "対象に固定のダメージ（1,000）"
+    },
+    "limited": false
+  },
+  {
+    "id": "e7",
+    "created": "2022-02-08T15:15:00",
+    "name": "モルボル",
+    "element": "wind",
+    "rarity": 4,
+    "cost": 30,
+    "awakening": 3,
+    "hp": 79,
+    "maxHp": 1136,
+    "tp": 10,
+    "maxTp": 20,
+    "ap": 14,
+    "maxAp": 23,
+    "power": 23,
+    "maxPower": 76,
+    "magic": 10,
+    "maxMagic": 29,
+    "shield": 0,
+    "maxShield": 0,
+    "barrier": 0,
+    "maxBarrier": 0,
+    "dexterity": 31,
+    "maxDexterity": 85,
+    "speed": 9,
+    "maxSpeed": 14,
+    "luck": 28,
+    "maxLuck": 78,
+    "elementResist": [
+      {
+        "name": "土属性",
+        "value": "5",
+        "conditions": ""
+      },
+      {
+        "name": "氷属性",
+        "value": "-5",
+        "conditions": ""
+      }
+    ],
+    "debuffResist": [
+      {
+        "name": "毒",
+        "value": "20",
+        "conditions": "※覚醒3"
+      }
+    ],
+    "boardBuffs": [
+      {
+        "type": "ステータスアップ",
+        "buffs": [
+          "TPUP",
+          "回避率"
+        ]
+      },
+      {
+        "type": "攻撃アップ",
+        "buffs": [
+          "打撃攻撃UP",
+          "風属性アビリティ攻撃UP"
+        ]
+      },
+      {
+        "type": "耐性アップ",
+        "buffs": [
+          "魔法耐性",
+          "氷耐性",
+          "麻痺耐性"
+        ]
+      },
+      {
+        "type": "キラーアップ",
+        "buffs": [
+          "土属性キラー",
+          "植物キラー"    
+        ]
+      },
+      {
+        "type": "その他",
+        "buffs": [
+          "召喚魔法Lv",
+          "初期AP"
+        ]
+      }
+    ],
+    "esperMagic": {
+      "name": "くさい息",
+      "effect": "確率で3ターン範囲内の対象に状態効果（毒・暗闇・睡眠・沈黙・混乱）付与"
     },
     "limited": false
   }

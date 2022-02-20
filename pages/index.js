@@ -89,21 +89,6 @@ function rarityLabel (rarity) {
   return label
 }
 
-function debuffLabel (debuff) {
-  let label
-  switch (debuff) {
-    case 'immobilize':
-      label = 'ドンムブ';
-    break;
-    case 'stop':
-      label = 'ストップ';
-    break;
-    default:
-      label = ''
-  }
-  return label
-}
-
 const columns = [
   {
     field: 'name',
@@ -139,7 +124,7 @@ const columns = [
     editable: false,
     popover: false,
     hide: false,
-    valueGetter: (params) => rarityLabel(params.row.rarity)
+    renderCell: (params) =>(<>{rarityLabel(params.row.rarity)}</>)
   },
   {
     field: 'cost',
