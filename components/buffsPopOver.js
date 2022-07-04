@@ -27,17 +27,17 @@ export default function BuffsPopOver(props) {
           return (
             <div key={i} style={{ padding: '8px' }}>
               <Typography variant="h6" sx={{ fontWeight: 'bold' }}>{`${buffs.type}`}</Typography>
-              {buffs.buffs.map((buff, i) => {
-                return (
-                  <Chip
-                    key={i}
-                    label={`${buff}`}
-                    variant="outlined"
-                    size="small"
-                    sx={{ mr: 1 }}
-                  />
-                )
-              })}
+                {buffs.buffs.map((buff, i) => {
+                  return (
+                    <Chip
+                      key={i}
+                      label={`${buff}`}
+                      variant="outlined"
+                      size="small"
+                      sx={{ m: 0.5 }}
+                    />
+                  )
+                })}
             </div>
           )
         })}
