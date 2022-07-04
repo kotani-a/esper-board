@@ -465,7 +465,8 @@ export default function Home() {
 
   return (
     <div style={{ height: `${documentHeight}px`, width: '100%' }}>
-      {process.env.ENVIROMENT_VARIABLES_TEST || '設定なし'}
+      {console.log(process.env)}
+      {console.log(process.env.ENVIROMENT_VARIABLES_TEST)}
       <ThemeProvider theme={theme}>
         <StyledDataGrid
           rows={rows}
