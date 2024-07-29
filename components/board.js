@@ -3,14 +3,9 @@ import { WebGLRenderer } from "node_modules/three/src/renderers/WebGLRenderer";
 import { PerspectiveCamera } from "node_modules/three/src/cameras/PerspectiveCamera";
 import { Scene } from "node_modules/three/src/scenes/Scene";
 import { PointLight } from "node_modules/three/src/lights/PointLight";
-// import { BoxGeometry } from 'node_modules/three/src/geometries/BoxGeometry';
 import { MeshLambertMaterial } from "node_modules/three/src/materials/MeshLambertMaterial";
 import { Mesh } from "node_modules/three/src/objects/Mesh";
 import { Group } from "node_modules/three/src/objects/Group";
-import { MeshBasicMaterial } from "node_modules/three/src/materials/MeshBasicMaterial";
-import { MeshToonMaterial } from "node_modules/three/src/materials/MeshToonMaterial";
-
-// import { OrbitControls } from 'node_modules/three/examples/jsm/controls/OrbitControls';
 
 import { TextureLoader } from "node_modules/three/src/loaders/TextureLoader";
 
@@ -20,7 +15,6 @@ import { CylinderGeometry } from "node_modules/three/src/geometries/CylinderGeom
 import { Vector2 } from "node_modules/three/src/math/Vector2";
 import { Vector3 } from "node_modules/three/src/math/Vector3";
 import { Raycaster } from "node_modules/three/src/core/Raycaster";
-// import { Color } from 'node_modules/three/src/math/Color';
 
 import styles from "../styles/board.module.scss";
 import SidePanel from "./sidePanel";
@@ -363,25 +357,6 @@ class Board extends React.Component {
 
   tick() {
     requestAnimationFrame(this.tick);
-
-    // anime add
-    // 箱を回転させる
-    // this.hexGroup0.rotation.x += 0.01
-
-    // this.mesh0.rotation.x += 0.001;
-    // this.mesh0.rotation.y += 0.001;
-    // this.mesh0.rotation.z += 0.001;
-
-    // this.mesh1.rotation.x += 0.01;
-
-    // this.mesh2.rotation.y += 0.1;
-
-    // this.mesh3.rotation.x -= 0.01;
-    // this.mesh3.rotation.y -= 0.01;
-
-    // this.mesh4.rotation.x += 0.04;
-    // this.mesh4.rotation.y -= 0.04;
-
     // レンダリング
     this.renderer.render(this.scene, this.camera);
   }
